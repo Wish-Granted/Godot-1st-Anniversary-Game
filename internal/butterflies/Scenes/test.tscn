@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://ibglkisvklgk"]
+
+[ext_resource type="Texture2D" uid="uid://ccvkscd77fle6" path="res://internal/butterflies/Assests/tile_sprite_sheet.png" id="1_pxin7"]
+[ext_resource type="PackedScene" uid="uid://is6ymvvqhg6a" path="res://internal/butterflies/Scenes/player.tscn" id="2_fe511"]
+[ext_resource type="PackedScene" uid="uid://cr832hinhbiaf" path="res://internal/butterflies/Scenes/butterfly.tscn" id="3_rngct"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rngct"]
+texture = ExtResource("1_pxin7")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -80, 128, -80, 128, 96, -128, 96)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 128, -80, 128, 96, -80, 96)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -128, 80, -128, 80, -80, 128, -80, 128, 96, -80, 96)
+
+[sub_resource type="TileSet" id="TileSet_tmn7y"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_rngct")
+
+[node name="test" type="Node2D" unique_id=1890362736]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=386802069]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD8/wQAAAABAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAABAAAAABA=")
+tile_set = SubResource("TileSet_tmn7y")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1183530398]
+position = Vector2(-48, 336)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Butterfly" parent="." unique_id=2081427361 instance=ExtResource("3_rngct")]
+position = Vector2(122, 380)
+
+[node name="Player" parent="." unique_id=1404434869 instance=ExtResource("2_fe511")]
+position = Vector2(-204, 437)

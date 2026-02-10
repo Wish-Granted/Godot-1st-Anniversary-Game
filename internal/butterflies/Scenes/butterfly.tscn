@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cr832hinhbiaf"]
+
+[ext_resource type="Script" uid="uid://bs3rrfyek44sw" path="res://internal/butterflies/Scenes/butterfly.gd" id="1_losla"]
+[ext_resource type="Texture2D" uid="uid://wmmgl6l6bnmv" path="res://internal/butterflies/Assests/butterfly_sprite_sheet.png" id="1_snq70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_losla"]
+atlas = ExtResource("1_snq70")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb300"]
+atlas = ExtResource("1_snq70")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixo6o"]
+atlas = ExtResource("1_snq70")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l48ao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_losla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb300")
+}],
+"loop": true,
+"name": &"flapping",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixo6o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Butterfly" type="RigidBody2D" unique_id=2081427361]
+collision_layer = 4
+collision_mask = 7
+mass = 0.1
+gravity_scale = 0.0
+linear_damp = 5.0
+angular_damp = 10.0
+script = ExtResource("1_losla")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1880116172]
+remote_path = NodePath("../RayCast2D")
+update_rotation = false
+update_scale = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=468814885]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-121, -91, -52, 98, 1, 36, 51, 93, 120, -96, 49, -83, -1, -16, -49, -80)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionPolygon2D" unique_id=1560919267]
+sprite_frames = SubResource("SpriteFrames_l48ao")
+animation = &"flapping"
+autoplay = "idle"
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1758540208]
+top_level = true
+target_position = Vector2(0, -300)
+
+[node name="Timer_Idle" type="Timer" parent="." unique_id=1595130301]
+one_shot = true
+
+[node name="Timer_Movement" type="Timer" parent="." unique_id=733396334]
+one_shot = true
+
+[connection signal="timeout" from="Timer_Movement" to="." method="_on_timer_movement_timeout"]
