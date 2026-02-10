@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr832hinhbiaf"]
 
-[ext_resource type="Script" uid="uid://bs3rrfyek44sw" path="res://internal/butterflies/Scenes/butterfly.gd" id="1_losla"]
+[ext_resource type="Script" uid="uid://bs3rrfyek44sw" path="res://internal/butterflies/Scripts/butterfly.gd" id="1_losla"]
 [ext_resource type="Texture2D" uid="uid://wmmgl6l6bnmv" path="res://internal/butterflies/Assests/butterfly_sprite_sheet.png" id="1_snq70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_losla"]
