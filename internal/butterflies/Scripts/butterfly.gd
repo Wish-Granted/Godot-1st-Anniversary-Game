@@ -3,23 +3,34 @@ extends RigidBody2D
 @onready var sprite_butterfly = $CollisionPolygon2D/AnimatedSprite2D
 @onready var collision_polygon = $CollisionPolygon2D
 @onready var ray_cast = $RayCast2D
+
 @onready var idle_timer = $Timer_Idle
 @onready var movement_timer = $Timer_Movement
+@onready var rotation_timer = $Timer_Rotation
 
 var debug = true
+
+@export var min_size = 0.3 / 2.0 #size as a percentage of normal amount
+@export var max_size = 1.0 / 2.0 #divided by two as sprite is too big mann
 
 var is_idle = false
 var is_rotating = false
 var is_moving = false
 var previous_action := "idle"
 	
-var target_rotation := 0.0
 var move_speed := 400
 var acceleration := 4
-var deceleration := 0.5
-var rotation_speed := 2
+var deceleration := 0.5	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var target_rotation := 0.0
+var rotation_speed := 2
+var rotation_timeout = false
+
+func _ready() -> void:
+	var size = randf_range(min_size, max_size)
+	print_if_debug("butterfly_size: ", snappedf(size,0.01))
+	collision_polygon.scale = Vector2(size, size)
+
 func _physics_process(delta: float) -> void:
 	#if doing nothing
 	# if was idling - move
@@ -34,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	if is_rotating:
 		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
 	
-	if snappedf(rotation, 0.01) == snappedf(target_rotation, 0.01):
+	if snappedf(rotation, 0.01) == snappedf(target_rotation, 0.01) or rotation_timeout:
 		
 		if is_rotating:
 			print_if_debug("finished rotating")
@@ -82,10 +93,17 @@ func do_movement():
 	sprite_butterfly.speed_scale = 0.7
 	sprite_butterfly.play("flapping")
 	is_rotating = true
+	rotation_timer.start()
 
 func _on_timer_movement_timeout() -> void:
 	print_if_debug("end movement\n")
 	is_moving = false
+	rotation_timeout = false
+
+func _on_timer_rotation_timeout() -> void:
+	if is_rotating:
+		print_if_debug("rotation timeout")
+		rotation_timeout = true
 
 func do_idle():
 	print_if_debug("starting idle")
@@ -98,7 +116,6 @@ func do_idle():
 	
 	is_idle = false
 	print_if_debug("finished idle\n")
-
 
 func print_if_debug(...args):
 	if debug:

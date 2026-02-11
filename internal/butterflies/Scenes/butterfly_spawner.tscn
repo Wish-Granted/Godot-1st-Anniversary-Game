@@ -6,11 +6,9 @@
 script = ExtResource("1_bxish")
 
 [node name="LineH" type="Line2D" parent="." unique_id=117081679]
-points = PackedVector2Array(0, 0, 0, 500)
-width = 5.0
+points = PackedVector2Array(0, 0, 0, 50)
 default_color = Color(0, 0, 0, 1)
 
 [node name="LineW" type="Line2D" parent="." unique_id=146502048]
-points = PackedVector2Array(0, 0, 500, 0)
-width = 5.0
+points = PackedVector2Array(0, 0, 50, 0)
 default_color = Color(0, 0, 0, 1)

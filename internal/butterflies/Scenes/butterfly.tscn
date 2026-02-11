@@ -70,4 +70,9 @@ one_shot = true
 [node name="Timer_Movement" type="Timer" parent="." unique_id=733396334]
 one_shot = true
 
+[node name="Timer_Rotation" type="Timer" parent="." unique_id=545770257]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="timeout" from="Timer_Movement" to="." method="_on_timer_movement_timeout"]
+[connection signal="timeout" from="Timer_Rotation" to="." method="_on_timer_rotation_timeout"]
