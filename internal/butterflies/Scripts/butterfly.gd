@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 			movement_timer.wait_time = randf_range(0.5, 3.0)
 			movement_timer.start()
 			is_rotating = false
+			sprite_butterfly.speed_scale = 1
 		
 		var forward_dir = Vector2.UP.rotated(rotation)
 		var target_velocity
@@ -78,6 +79,8 @@ func do_movement():
 	# get new rotation between -180 and 180 degrees
 	target_rotation = deg_to_rad(get_valid_rotation(-180, 180))
 	print_if_debug("Start rotate")
+	sprite_butterfly.speed_scale = 0.7
+	sprite_butterfly.play("flapping")
 	is_rotating = true
 
 func _on_timer_movement_timeout() -> void:
@@ -88,7 +91,7 @@ func do_idle():
 	print_if_debug("starting idle")
 	is_idle = true
 	previous_action = "idle"
-	
+	sprite_butterfly.play("idle")
 	idle_timer.wait_time = randf_range(0.5, 3.0)
 	idle_timer.start()
 	await idle_timer.timeout

@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://famicpuqvygt"]
 
+[ext_resource type="Script" uid="uid://rx0fl7xvk4yo" path="res://internal/butterflies/Scripts/butterfly_spawner.gd" id="1_bxish"]
+
 [node name="Butterfly Spawner" type="Node2D" unique_id=937437305]
+script = ExtResource("1_bxish")
+
+[node name="LineH" type="Line2D" parent="." unique_id=117081679]
+points = PackedVector2Array(0, 0, 0, 500)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="LineW" type="Line2D" parent="." unique_id=146502048]
+points = PackedVector2Array(0, 0, 500, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
