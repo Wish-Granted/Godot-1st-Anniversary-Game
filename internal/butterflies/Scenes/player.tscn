@@ -184,7 +184,7 @@ animation = &"run"
 
 [node name="AnimatedSprite2D_arm" type="AnimatedSprite2D" parent="." unique_id=2066666544]
 position = Vector2(-4, -331)
-scale = Vector2(1, 1.5)
+scale = Vector2(1, 1.2)
 sprite_frames = SubResource("SpriteFrames_j2m8e")
 animation = &"arm_3"
 offset = Vector2(0, 121)
