@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ccvkscd77fle6" path="res://internal/butterflies/Assests/tile_sprite_sheet.png" id="1_b3jro"]
 [ext_resource type="Texture2D" uid="uid://dkpcvdktjjwjw" path="res://internal/butterflies/Assests/Background.png" id="1_jf6bu"]
-[ext_resource type="Script" uid="uid://cmkyyoe2cb71f" path="res://internal/butterflies/Scenes/game_butterfly.gd" id="1_pyjba"]
-[ext_resource type="PackedScene" uid="uid://cr832hinhbiaf" path="res://internal/butterflies/Scenes/butterfly.tscn" id="2_jf6bu"]
+[ext_resource type="Script" uid="uid://cmkyyoe2cb71f" path="res://internal/butterflies/Scripts/game_butterfly.gd" id="1_pyjba"]
 [ext_resource type="PackedScene" uid="uid://is6ymvvqhg6a" path="res://internal/butterflies/Scenes/player.tscn" id="3_pyjba"]
 [ext_resource type="PackedScene" uid="uid://famicpuqvygt" path="res://internal/butterflies/Scenes/butterfly_spawner.tscn" id="4_t182p"]
 
@@ -72,14 +71,15 @@ sources/0 = SubResource("TileSetAtlasSource_rngct")
 script = ExtResource("1_pyjba")
 
 [node name="Sprite_Background" type="Sprite2D" parent="." unique_id=1328178699]
-scale = Vector2(1.15, 1.15)
+position = Vector2(0, 45)
 texture = ExtResource("1_jf6bu")
 
 [node name="World_Borders" type="StaticBody2D" parent="." unique_id=569220207]
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World_Borders" unique_id=2056795938]
-polygon = PackedVector2Array(1104, -624, 1104, 488, 1344, 488, 1344, -768, -1152, -768, -1152, -624)
+position = Vector2(-128, 112)
+polygon = PackedVector2Array(1104, -624, 1104, 488, 1344, 488, 1344, -768, -1152, -768, -1152, -616)
 
 [node name="Death_Borders" type="Area2D" parent="." unique_id=1262686297]
 collision_mask = 6
@@ -105,15 +105,12 @@ scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAD4/wMAAAAEAAAAAAD4/wQAAAAJAAAAAAD5/wMAAAAEAAAAAAD5/wQAAAAJAAAAAAD6/wMAAAAEAAAAAAD6/wQAAAAJAAAAAAD7/wMAAAAEAAEAAAD7/wQAAAAJAAAAAAD8/wMAAAAEAAAAAAD8/wQAAAAJAAAAAAD9/wMAAAAEAAAAAAD9/wQAAAAJAAAAAAD+/wMAAAAEAAAAAAD+/wQAAAAJAAAAAAD//wMAAAAEAAEAAAD//wQAAAAJAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAJAAAAAAABAAMAAAAEAAAAAAABAAQAAAAJAAAAAAACAAMAAAAEAAEAAAACAAQAAAAJAAAAAAADAAMAAAAEAAEAAAADAAQAAAAJAAAAAAAEAAMAAAAEAAEAAAAEAAQAAAAJAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAAJAAAAAAAGAAMAAAAEAAAAAAAGAAQAAAAJAAAAAAAHAAMAAAAEAAAAAAAHAAQAAAAJAAAAAAD4/wUAAAAJAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAJAAAAAAD7/wUAAAAJAAAAAAD8/wUAAAAJAAAAAAD9/wUAAAAJAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAJAAAAAAAAAAUAAAAJAAAAAAABAAUAAAAJAAAAAAACAAUAAAAJAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAJAAAAAAAFAAUAAAAJAAAAAAAGAAUAAAAJAAAAAAAHAAUAAAAJAAAAAAD3/wUAAAAJAAAAAAD3/wQAAAAJAAAAAAAIAAQAAAAJAAAAAAAIAAUAAAAJAAAAAAAIAAMAAAAEAAEAAAD3/wMAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_tmn7y")
 
-[node name="Butterfly" parent="." unique_id=2081427361 instance=ExtResource("2_jf6bu")]
-position = Vector2(170, 46)
-
 [node name="Player" parent="." unique_id=1404434869 instance=ExtResource("3_pyjba")]
 position = Vector2(-231, 179)
 
 [node name="Butterfly Spawner" parent="." unique_id=937437305 instance=ExtResource("4_t182p")]
+position = Vector2(-960, -495)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1183530398]
-zoom = Vector2(0.9, 0.9)
 
 [connection signal="body_entered" from="Death_Borders" to="." method="_on_death_borders_body_entered"]

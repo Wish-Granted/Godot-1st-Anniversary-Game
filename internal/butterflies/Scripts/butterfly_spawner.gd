@@ -1,13 +1,46 @@
 extends Node2D
 
-@export var height := 1080
 @export var width := 1920
+@export var height := 1080 - 88 #approximate adjustment for window title/ taskbar
 
-@onready var border_X = $LineH
-@onready var border_Y = $LineW
+@onready var debug_border = $"Line Spawner Border"
+const butterfly_scene = preload("res://internal/butterflies/Scenes/butterfly.tscn")
+@onready var wave_timer = $"Wave Timer"
+
+var total_butterflies = 0
+var time_between_waves := 1
+var number_of_butterflies_each_wave := 1
+var max_butterflies = number_of_butterflies_each_wave * 5
 
 func _ready() -> void:
-	border_X.remove_point(1)
-	border_X.add_point(Vector2(width,0))
-	border_Y.remove_point(1)
-	border_Y.add_point(Vector2(0,height))
+	debug_border.clear_points()
+	debug_border.add_point(Vector2(0,0))
+	debug_border.add_point(Vector2(width,0))
+	debug_border.add_point(Vector2(width,height))
+	debug_border.add_point(Vector2(0,height))
+	debug_border.add_point(Vector2(0,0))
+	
+	do_wave_loop()	
+
+func spawn_butterfly_wave():
+	for butterfly in range(number_of_butterflies_each_wave):
+		var spawn_position = Vector2()
+		spawn_position.x = randi_range(0, width)
+		spawn_position.y = randi_range(0, height)
+		
+		total_butterflies += 1
+		var new_butterfly = butterfly_scene.instantiate() 
+		new_butterfly.name = "butterfly_" + str(total_butterflies)
+		new_butterfly.position = spawn_position
+		self.add_child(new_butterfly)
+		
+func do_wave_loop():
+	if total_butterflies < max_butterflies:
+		spawn_butterfly_wave()
+	wave_timer.wait_time = time_between_waves
+	wave_timer.start()
+	await wave_timer.timeout
+	do_wave_loop()
+	
+	
+	

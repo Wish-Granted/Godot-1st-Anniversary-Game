@@ -5,10 +5,11 @@
 [node name="Butterfly Spawner" type="Node2D" unique_id=937437305]
 script = ExtResource("1_bxish")
 
-[node name="LineH" type="Line2D" parent="." unique_id=117081679]
-points = PackedVector2Array(0, 0, 0, 50)
-default_color = Color(0, 0, 0, 1)
+[node name="Line Spawner Border" type="Line2D" parent="." unique_id=117081679]
+points = PackedVector2Array(50, 0, 0, 0, 0, 50)
+default_color = Color(0, 0, 1, 1)
 
-[node name="LineW" type="Line2D" parent="." unique_id=146502048]
-points = PackedVector2Array(0, 0, 50, 0)
-default_color = Color(0, 0, 0, 1)
+[node name="Wave Timer" type="Timer" parent="." unique_id=1357916166]
+one_shot = true
+
+[node name="Butterflies" type="Node" parent="." unique_id=142630033]
