@@ -5,9 +5,11 @@ extends Node2D
 
 @onready var debug_border = $"Line Spawner Border"
 const butterfly_scene = preload("res://internal/butterflies/Scenes/butterfly.tscn")
+@onready var butterflies = $Butterflies
 @onready var wave_timer = $"Wave Timer"
 
-var total_butterflies = 0
+var total_alive_butterflies = 0
+var total_butterflies_spawned = 0
 var time_between_waves := 1
 var number_of_butterflies_each_wave := 1
 var max_butterflies = number_of_butterflies_each_wave * 5
@@ -28,14 +30,16 @@ func spawn_butterfly_wave():
 		spawn_position.x = randi_range(0, width)
 		spawn_position.y = randi_range(0, height)
 		
-		total_butterflies += 1
+		total_alive_butterflies += 1
 		var new_butterfly = butterfly_scene.instantiate() 
-		new_butterfly.name = "butterfly_" + str(total_butterflies)
+		new_butterfly.name = "butterfly_" + str(total_butterflies_spawned)
 		new_butterfly.position = spawn_position
-		self.add_child(new_butterfly)
+		new_butterfly.rotation_degrees = randi_range(0,360)
+		butterflies.add_child(new_butterfly)
+		total_butterflies_spawned += 1
 		
 func do_wave_loop():
-	if total_butterflies < max_butterflies:
+	if total_alive_butterflies < max_butterflies:
 		spawn_butterfly_wave()
 	wave_timer.wait_time = time_between_waves
 	wave_timer.start()

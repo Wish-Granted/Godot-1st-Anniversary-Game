@@ -169,6 +169,90 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_i685u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-8, -336, 8, -336, 8, -256, 0, -160, -16, -160, -8, -256)]
+}
+
+[sub_resource type="Animation" id="Animation_j6wbt"]
+resource_name = "arm0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-8, -336, 8, -336, 8, -256, 0, -160, -16, -160, -8, -256)]
+}
+
+[sub_resource type="Animation" id="Animation_xvh2b"]
+resource_name = "arm_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-8, -336, 8, -336, 8, -256, 8, -232, 24, -216, 24, -112, 8, -96, -40, -104, -56, -144, -48, -200, -8, -232, -8, -256)]
+}
+
+[sub_resource type="Animation" id="Animation_gxjox"]
+resource_name = "arm_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-8, -336, 8, -336, 8, -256, 4.284027, -211.40842, 8, -224, 16, -216, 0, -160, -40, -96, -24, -88, -32, -48, -72, -40, -88, -72, -72, -96, -48, -104, -16, -160, -8, -256)]
+}
+
+[sub_resource type="Animation" id="Animation_2ir2h"]
+resource_name = "arm_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-8, -336, 8, -336, 8, -256, 16, -240, 24, -240, 8, -160, -8, -96, 0, -64, -16, -32, -72, -56, -64, -88, -40, -104, -24, -160, -8, -256)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bqeh"]
+_data = {
+&"RESET": SubResource("Animation_i685u"),
+&"arm_0": SubResource("Animation_j6wbt"),
+&"arm_1": SubResource("Animation_xvh2b"),
+&"arm_2": SubResource("Animation_gxjox"),
+&"arm_3": SubResource("Animation_2ir2h")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sp1c"]
 size = Vector2(51, 424)
 
@@ -183,24 +267,29 @@ sprite_frames = SubResource("SpriteFrames_ofbuc")
 animation = &"run"
 
 [node name="AnimatedSprite2D_arm" type="AnimatedSprite2D" parent="." unique_id=2066666544]
+z_index = 2
 position = Vector2(-4, -331)
 scale = Vector2(1, 1.2)
 sprite_frames = SubResource("SpriteFrames_j2m8e")
-animation = &"arm_3"
+animation = &"arm_0"
 offset = Vector2(0, 121)
 
-[node name="Timer_arm_timeout" type="Timer" parent="AnimatedSprite2D_arm" unique_id=510450055]
-wait_time = 0.3
-one_shot = true
+[node name="Arm_area" type="Area2D" parent="AnimatedSprite2D_arm" unique_id=919926301]
+position = Vector2(4, 275.8333)
+scale = Vector2(1, 0.8333333)
+collision_layer = 2
+collision_mask = 4
 
-[node name="Timer_arm_swing" type="Timer" parent="AnimatedSprite2D_arm" unique_id=305318922]
-wait_time = 0.3
-one_shot = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D_arm/Arm_area" unique_id=1246238041]
+polygon = PackedVector2Array(-8, -336, 8, -336, 8, -256, 0, -160, -16, -160, -8, -256)
+
+[node name="Animation_ArmCollision" type="AnimationPlayer" parent="AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D" unique_id=1831964783]
+root_node = NodePath("../../../..")
+libraries/ = SubResource("AnimationLibrary_5bqeh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1856041951]
 position = Vector2(0.5, -221)
 shape = SubResource("RectangleShape2D_1sp1c")
 
 [connection signal="frame_changed" from="AnimatedSprite2D_body" to="." method="_on_animated_sprite_2d_body_frame_changed"]
-[connection signal="timeout" from="AnimatedSprite2D_arm/Timer_arm_timeout" to="." method="_on_timer_arm_timeout_timeout"]
-[connection signal="timeout" from="AnimatedSprite2D_arm/Timer_arm_swing" to="." method="_on_timer_arm_swing_timeout"]
+[connection signal="body_entered" from="AnimatedSprite2D_arm/Arm_area" to="." method="_on_arm_area_body_entered"]

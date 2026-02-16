@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://05ko2r1kk5rh"]
+
+[ext_resource type="Script" uid="uid://bv1b33nbw76ae" path="res://score_bar.gd" id="1_n4rab"]
+[ext_resource type="FontFile" uid="uid://cjsc0rntpenjp" path="res://internal/butterflies/Assests/ARLRDBD.TTF" id="2_ko2g4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ko2g4"]
+font = ExtResource("2_ko2g4")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Score_Bar" type="HBoxContainer" unique_id=1088130321]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.5
+offset_right = 55.5
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("1_n4rab")
+
+[node name="Butterfly_Counter_Label" type="Label" parent="." unique_id=467470541]
+layout_mode = 2
+text = " Butterflies "
+label_settings = SubResource("LabelSettings_ko2g4")
+
+[node name="Butterfly_Display" type="HBoxContainer" parent="." unique_id=1813896316]
+layout_mode = 2

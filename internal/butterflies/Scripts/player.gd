@@ -4,8 +4,11 @@ extends CharacterBody2D
 @onready var sprite_body := $AnimatedSprite2D_body
 
 @onready var sprite_arm := $AnimatedSprite2D_arm
-@onready var arm_timeout_timer := $AnimatedSprite2D_arm/Timer_arm_timeout
-@onready var arm_swing_timer := $AnimatedSprite2D_arm/Timer_arm_swing
+@onready var animation_player_arm_collision := $AnimatedSprite2D_arm/Arm_area/CollisionPolygon2D/Animation_ArmCollision
+
+@onready var butterfly_spawner := $"../Butterfly Spawner"
+
+@onready var score_bar := $"../Score_Bar"
 
 var arm_ready := true
 var arm_level := 0
@@ -15,6 +18,7 @@ const JUMP_VELOCITY = -1600
 
 func _ready() -> void:
 	sprite_arm.play("arm_%s" %arm_level)
+	animation_player_arm_collision.play("arm_%s" %arm_level)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -49,32 +53,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("Left Click"):
 		do_arm_movement()
-	elif arm_level == 3:
+	else:
 		sprite_arm.rotation_degrees = 0
 
 func do_arm_movement() -> void:
-	if not arm_ready:
-		return
-	sprite_arm.play("arm_%s" %arm_level)
-	if arm_level == 0 or arm_level == 1:
-		sprite_arm.look_at(get_global_mouse_position())
-		sprite_arm.rotation_degrees -= 92
-	elif arm_level == 2:
-		pass
-	elif arm_level == 3:
-		sprite_arm.look_at(get_global_mouse_position())
-		sprite_arm.rotation_degrees -= 92
-	
-	if arm_level != 3:
-		arm_ready = false
-		arm_swing_timer.start()
-		
-func _on_timer_arm_swing_timeout() -> void:
-	sprite_arm.rotation_degrees = 0
-	arm_timeout_timer.start()
-
-func _on_timer_arm_timeout_timeout() -> void:
-	arm_ready = true
+	sprite_arm.look_at(get_global_mouse_position())
+	sprite_arm.rotation_degrees -= 92
 
 const ARM_RESTING_POSITION := -322
 const ARM_Y_POSITION_BY_FRAME_WHEN_WALKING := [
@@ -84,3 +68,11 @@ const ARM_Y_POSITION_BY_FRAME_WHEN_WALKING := [
 func _on_animated_sprite_2d_body_frame_changed() -> void:
 	if sprite_body.animation == "run":
 		sprite_arm.position.y = ARM_Y_POSITION_BY_FRAME_WHEN_WALKING[sprite_body.frame]	
+
+
+func _on_arm_area_body_entered(body: Node2D) -> void:
+	print("player touched: ", body.name)
+	if "butterfly" in body.name:
+		score_bar.update_score(1)
+		butterfly_spawner.total_alive_butterflies -= 1
+		body.queue_free()

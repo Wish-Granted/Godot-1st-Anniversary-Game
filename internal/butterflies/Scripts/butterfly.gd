@@ -10,8 +10,8 @@ extends RigidBody2D
 
 var debug = false
 
-@export var min_size = 0.3 / 2.0 #size as a percentage of normal amount
-@export var max_size = 1.0 / 2.0 #divided by two as sprite is too big mann
+@export var min_size = 0.2 / 2.0 #size as a percentage of normal amount
+@export var max_size = 0.5 / 2.0 #divided by two as sprite is too big mann
 
 var is_idle = false
 var is_rotating = false
