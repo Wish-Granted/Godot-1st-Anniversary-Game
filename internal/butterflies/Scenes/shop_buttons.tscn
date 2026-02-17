@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://blig6d54h7h7i"]
+
+[ext_resource type="Texture2D" uid="uid://hw2hkayjg5c2" path="res://internal/butterflies/Assests/Shop/Shop Arm.png" id="1_g6lpo"]
+[ext_resource type="Script" uid="uid://7q0e22de5m6b" path="res://internal/butterflies/Scenes/shop_buttons.gd" id="1_ka4ky"]
+[ext_resource type="Texture2D" uid="uid://dugpecutyvrsu" path="res://internal/butterflies/Assests/Shop/Shop Butterfly.png" id="2_ka4ky"]
+
+[node name="Shop_Buttons" type="VBoxContainer" unique_id=1682974707]
+offset_right = 204.0
+offset_bottom = 132.0
+script = ExtResource("1_ka4ky")
+
+[node name="ShopArm" type="TextureButton" parent="." unique_id=2100226840]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_g6lpo")
+texture_pressed = ExtResource("1_g6lpo")
+texture_hover = ExtResource("1_g6lpo")
+texture_disabled = ExtResource("1_g6lpo")
+texture_focused = ExtResource("1_g6lpo")
+
+[node name="ShopButterfly" type="TextureButton" parent="." unique_id=732849699]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_ka4ky")
+texture_pressed = ExtResource("2_ka4ky")
+texture_hover = ExtResource("2_ka4ky")
+texture_disabled = ExtResource("2_ka4ky")
+texture_focused = ExtResource("2_ka4ky")

@@ -7,6 +7,8 @@ extends HBoxContainer
 @onready var butterfly_display := $Butterfly_Display
 const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_icon.png")
 
+@onready var shop_buttons := $"../Shop_Buttons"
+
 var total_butterflies_collected = 0
 
 func _ready() -> void:
@@ -40,4 +42,10 @@ func update_score(delta_butterflies: int) -> int:
 		# Reset to default spacing if under the limit
 		butterfly_display.add_theme_constant_override("separation", 0)
 	
+	if total_butterflies_collected == 5:
+		shop_buttons.show_shop_button("arm")
+	elif total_butterflies_collected == 10:
+		shop_buttons.show_shop_button("butterfly")
+	
+	print(total_butterflies_collected)
 	return total_butterflies_collected
