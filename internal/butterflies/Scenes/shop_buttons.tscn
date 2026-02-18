@@ -4,6 +4,18 @@
 [ext_resource type="Script" uid="uid://7q0e22de5m6b" path="res://internal/butterflies/Scripts/shop_buttons.gd" id="1_ka4ky"]
 [ext_resource type="Texture2D" uid="uid://dugpecutyvrsu" path="res://internal/butterflies/Assests/Shop/Shop Butterfly.png" id="2_ka4ky"]
 
+[sub_resource type="Gradient" id="Gradient_ka4ky"]
+offsets = PackedFloat32Array(0, 0.1, 1)
+colors = PackedColorArray(1, 1, 1, 0.32941177, 0.8, 0.8, 0.8, 0.15686275, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ka4ky"]
+gradient = SubResource("Gradient_ka4ky")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+metadata/_snap_enabled = true
+
 [node name="Shop_Buttons" type="VBoxContainer" unique_id=1682974707]
 offset_right = 204.0
 offset_bottom = 132.0
@@ -11,7 +23,7 @@ script = ExtResource("1_ka4ky")
 
 [node name="ShopArm" type="TextureButton" parent="." unique_id=2100226840]
 visible = false
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 texture_normal = ExtResource("1_g6lpo")
 texture_pressed = ExtResource("1_g6lpo")
@@ -19,12 +31,32 @@ texture_hover = ExtResource("1_g6lpo")
 texture_disabled = ExtResource("1_g6lpo")
 texture_focused = ExtResource("1_g6lpo")
 
+[node name="Glow" type="TextureRect" parent="ShopArm" unique_id=685278711]
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_ka4ky")
+
 [node name="ShopButterfly" type="TextureButton" parent="." unique_id=732849699]
 visible = false
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 texture_normal = ExtResource("2_ka4ky")
 texture_pressed = ExtResource("2_ka4ky")
 texture_hover = ExtResource("2_ka4ky")
 texture_disabled = ExtResource("2_ka4ky")
 texture_focused = ExtResource("2_ka4ky")
+
+[node name="Glow" type="TextureRect" parent="ShopButterfly" unique_id=1084740456]
+z_index = -1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_ka4ky")
