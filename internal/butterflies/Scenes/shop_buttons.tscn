@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blig6d54h7h7i"]
 
 [ext_resource type="Texture2D" uid="uid://hw2hkayjg5c2" path="res://internal/butterflies/Assests/Shop/Shop Arm.png" id="1_g6lpo"]
-[ext_resource type="Script" uid="uid://7q0e22de5m6b" path="res://internal/butterflies/Scripts/shop_buttons.gd" id="1_ka4ky"]
+[ext_resource type="Script" uid="uid://7q0e22de5m6b" path="res://internal/butterflies/Scenes/shop_buttons.gd" id="1_ka4ky"]
 [ext_resource type="Texture2D" uid="uid://dugpecutyvrsu" path="res://internal/butterflies/Assests/Shop/Shop Butterfly.png" id="2_ka4ky"]
 
 [node name="Shop_Buttons" type="VBoxContainer" unique_id=1682974707]
