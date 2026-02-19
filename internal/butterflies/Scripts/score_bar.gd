@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@export var icon_width: float = 64 
+@export var icon_width: float = 64
 @export var max_width: float = icon_width * 10
 
 @onready var butterfly_counter := $Butterfly_Counter_Label

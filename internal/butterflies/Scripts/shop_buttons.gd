@@ -12,11 +12,15 @@ func show_shop_button(button: String) -> void:
 		shop_button_butterfly.visible = true
 
 func _on_shop_arm_pressed() -> void:
-	print("arm opened")
-	shop_gui.open_shop("arm")
+	print("arm pressed")
+	if shop_gui.shop_arm.visible == false:
+		shop_gui.open_shop("arm")
+	else:
+		shop_gui.close_shop()
 
 func _on_shop_butterfly_pressed() -> void:
-	shop_gui.open_shop("butterfly")
-	print("butterfly opened")
-
-	
+	print("butterfly pressed")
+	if shop_gui.shop_buttefly.visible == false:
+		shop_gui.open_shop("butterfly")
+	else:
+		shop_gui.close_shop()

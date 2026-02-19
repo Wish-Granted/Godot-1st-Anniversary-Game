@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://05ko2r1kk5rh"]
 
-[ext_resource type="Script" uid="uid://bv1b33nbw76ae" path="res://score_bar.gd" id="1_n4rab"]
-[ext_resource type="FontFile" uid="uid://cjsc0rntpenjp" path="res://internal/butterflies/Assests/ARLRDBD.TTF" id="2_ko2g4"]
+[ext_resource type="Script" uid="uid://bv1b33nbw76ae" path="res://internal/butterflies/Scripts/score_bar.gd" id="1_n4rab"]
+[ext_resource type="FontFile" uid="uid://bh7u1posc7a2t" path="res://internal/butterflies/Assests/grantedhandwriting.ttf" id="2_ko2g4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ko2g4"]
 font = ExtResource("2_ko2g4")
-font_size = 48
+font_size = 64
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 

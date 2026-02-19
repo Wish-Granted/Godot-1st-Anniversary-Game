@@ -23,14 +23,10 @@ mouse_filter = 2
 script = ExtResource("1_ka4ky")
 
 [node name="ShopArm" type="TextureButton" parent="." unique_id=2100226840]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("1_g6lpo")
-texture_pressed = ExtResource("1_g6lpo")
-texture_hover = ExtResource("1_g6lpo")
-texture_disabled = ExtResource("1_g6lpo")
-texture_focused = ExtResource("1_g6lpo")
 
 [node name="Glow" type="TextureRect" parent="ShopArm" unique_id=685278711]
 z_index = -1
@@ -40,6 +36,7 @@ offset_top = -16.0
 offset_right = 48.0
 offset_bottom = 48.0
 scale = Vector2(1.5, 1.5)
+mouse_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_ka4ky")
 
 [node name="ShopButterfly" type="TextureButton" parent="." unique_id=732849699]
@@ -47,19 +44,14 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("2_ka4ky")
-texture_pressed = ExtResource("2_ka4ky")
-texture_hover = ExtResource("2_ka4ky")
-texture_disabled = ExtResource("2_ka4ky")
-texture_focused = ExtResource("2_ka4ky")
 
 [node name="Glow" type="TextureRect" parent="ShopButterfly" unique_id=1084740456]
 z_index = -1
 layout_mode = 0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 48.0
-offset_bottom = 48.0
-scale = Vector2(1.5, 1.5)
+offset_top = 79.0
+offset_right = 64.0
+offset_bottom = 143.0
+mouse_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_ka4ky")
 
 [connection signal="pressed" from="ShopArm" to="." method="_on_shop_arm_pressed"]
