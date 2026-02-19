@@ -47,5 +47,5 @@ func update_score(delta_butterflies: int) -> int:
 	elif total_butterflies_collected == 10:
 		shop_buttons.show_shop_button("butterfly")
 	
-	print(total_butterflies_collected)
+	#print(total_butterflies_collected)
 	return total_butterflies_collected

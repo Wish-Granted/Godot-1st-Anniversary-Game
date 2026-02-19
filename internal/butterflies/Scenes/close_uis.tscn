@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cmsfisy7udl8c"]
+
+[ext_resource type="Script" uid="uid://co2orhbwsjjsc" path="res://internal/butterflies/Scripts/close_uis.gd" id="1_db3st"]
+
+[node name="Close UIs" type="Control" unique_id=2064761457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_db3st")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

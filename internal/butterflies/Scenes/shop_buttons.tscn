@@ -17,14 +17,15 @@ fill_to = Vector2(0.90000004, 0.1)
 metadata/_snap_enabled = true
 
 [node name="Shop_Buttons" type="VBoxContainer" unique_id=1682974707]
-offset_right = 204.0
-offset_bottom = 132.0
+offset_right = 64.0
+offset_bottom = 154.0
+mouse_filter = 2
 script = ExtResource("1_ka4ky")
 
 [node name="ShopArm" type="TextureButton" parent="." unique_id=2100226840]
-visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("1_g6lpo")
 texture_pressed = ExtResource("1_g6lpo")
 texture_hover = ExtResource("1_g6lpo")
@@ -42,9 +43,9 @@ scale = Vector2(1.5, 1.5)
 texture = SubResource("GradientTexture2D_ka4ky")
 
 [node name="ShopButterfly" type="TextureButton" parent="." unique_id=732849699]
-visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("2_ka4ky")
 texture_pressed = ExtResource("2_ka4ky")
 texture_hover = ExtResource("2_ka4ky")
@@ -60,3 +61,6 @@ offset_right = 48.0
 offset_bottom = 48.0
 scale = Vector2(1.5, 1.5)
 texture = SubResource("GradientTexture2D_ka4ky")
+
+[connection signal="pressed" from="ShopArm" to="." method="_on_shop_arm_pressed"]
+[connection signal="pressed" from="ShopButterfly" to="." method="_on_shop_butterfly_pressed"]
