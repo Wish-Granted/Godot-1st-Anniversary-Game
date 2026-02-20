@@ -46,7 +46,7 @@ shader_parameter/onoff = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bu4i4"]
 shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 1.0
+shader_parameter/onoff = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awqns"]
 shader = ExtResource("7_ocfam")
@@ -54,7 +54,7 @@ shader_parameter/onoff = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebap1"]
 shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 1.0
+shader_parameter/onoff = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bsey"]
 shader = ExtResource("7_ocfam")
@@ -62,7 +62,7 @@ shader_parameter/onoff = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_quucq"]
 shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 1.0
+shader_parameter/onoff = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_40pah"]
 shader = ExtResource("7_ocfam")
@@ -85,6 +85,7 @@ texture = ExtResource("1_yh18p")
 script = ExtResource("2_3hl3v")
 
 [node name="Shop Arm" type="VBoxContainer" parent="." unique_id=1479769369]
+visible = false
 layout_mode = 0
 offset_left = 120.0
 offset_top = 75.0
@@ -92,6 +93,7 @@ offset_right = 1576.0
 offset_bottom = 740.0
 
 [node name="Arm1" type="HBoxContainer" parent="Shop Arm" unique_id=965826266]
+custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Arm/Arm1" unique_id=979921701]
@@ -153,7 +155,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Arm2" type="HBoxContainer" parent="Shop Arm" unique_id=934850959]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Arm/Arm2" unique_id=1345678204]
@@ -216,6 +218,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Arm3" type="HBoxContainer" parent="Shop Arm" unique_id=691064532]
+custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Arm/Arm3" unique_id=1286742417]
@@ -284,7 +287,7 @@ offset_right = 1243.0
 offset_bottom = 272.0
 
 [node name="Upgrade1" type="HBoxContainer" parent="Shop Butterfly" unique_id=714616927]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade1" unique_id=1531337351]
@@ -346,7 +349,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Upgrade2" type="HBoxContainer" parent="Shop Butterfly" unique_id=952167197]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade2" unique_id=1054972401]
@@ -409,6 +412,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Upgrade3" type="HBoxContainer" parent="Shop Butterfly" unique_id=754467611]
+custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade3" unique_id=1048533642]
@@ -479,4 +483,7 @@ flat = true
 expand_icon = true
 
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="Shop Arm/Arm1/CostBuy/Buy_Button" to="." method="_on_arm1_buy_button_pressed"]
+[connection signal="pressed" from="Shop Arm/Arm2/CostBuy/Buy_Button" to="." method="_on_arm2_buy_button_pressed"]
+[connection signal="pressed" from="Shop Arm/Arm3/CostBuy/Buy_Button" to="." method="_on_arm3_buy_button_pressed"]
 [connection signal="pressed" from="Close Button" to="." method="_on_close_button_pressed"]

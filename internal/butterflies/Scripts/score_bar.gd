@@ -8,8 +8,9 @@ extends HBoxContainer
 const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_icon.png")
 
 @onready var shop_buttons := $"../Shop_Buttons"
+@onready var shop := $"../shop"
 
-var total_butterflies_collected = 0
+var current_butterfly_count = 0
 
 func _ready() -> void:
 	update_score(0)
@@ -23,29 +24,30 @@ func update_score(delta_butterflies: int) -> int:
 			rect.expand_mode = TextureRect.EXPAND_KEEP_SIZE
 			butterfly_display.add_child(rect)
 	elif delta_butterflies < 0:
-		for i in range(delta_butterflies):
-			butterfly_display.get_child(0).queue_free()
+		for i in range(delta_butterflies*-1):
+			print("killed")
+			butterfly_display.get_child(0).free()
 
-	total_butterflies_collected += delta_butterflies
-	butterfly_counter.text = str(total_butterflies_collected) + " Butterflies "
+	current_butterfly_count += delta_butterflies
+	butterfly_counter.text = str(current_butterfly_count) + " Butterflies "
 
 	# 2. Calculate spacing
-	var total_uncompressed_width = total_butterflies_collected * icon_width
+	var total_uncompressed_width = current_butterfly_count * icon_width
 	
 	if total_uncompressed_width > max_width:
 		# Formula for negative separation to fit within max_width:
 		# (max_width - (icon_width * count)) / (count - 1)
-		if total_butterflies_collected > 1:
-			var overlap = (max_width - total_uncompressed_width) / (total_butterflies_collected - 1)
+		if current_butterfly_count > 1:
+			var overlap = (max_width - total_uncompressed_width) / (current_butterfly_count - 1)
 			butterfly_display.add_theme_constant_override("separation", int(overlap))
 	else:
 		# Reset to default spacing if under the limit
 		butterfly_display.add_theme_constant_override("separation", 0)
 	
-	if total_butterflies_collected == 5:
+	if current_butterfly_count == 5:
 		shop_buttons.show_shop_button("arm")
-	elif total_butterflies_collected == 10:
+	elif current_butterfly_count == 10:
 		shop_buttons.show_shop_button("butterfly")
 	
-	#print(total_butterflies_collected)
-	return total_butterflies_collected
+	#print(current_butterfly_count)
+	return current_butterfly_count

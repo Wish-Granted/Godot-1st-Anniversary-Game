@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var butterfly_spawner := $"../Butterfly Spawner"
 
+@onready var shop := $"../shop"
 @onready var score_bar := $"../Score_Bar"
 
 var arm_ready := true
@@ -17,8 +18,7 @@ const SPEED = 400
 const JUMP_VELOCITY = -1600
 
 func _ready() -> void:
-	sprite_arm.play("arm_%s" %arm_level)
-	animation_player_arm_collision.play("arm_%s" %arm_level)
+	update_arm_sprite(arm_level)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	
-	if Input.is_action_pressed("Left Click"):
+	if Input.is_action_pressed("Left Click") and shop.visible == false:
 		do_arm_movement()
 	else:
 		sprite_arm.rotation_degrees = 0
@@ -69,10 +69,15 @@ func _on_animated_sprite_2d_body_frame_changed() -> void:
 	if sprite_body.animation == "run":
 		sprite_arm.position.y = ARM_Y_POSITION_BY_FRAME_WHEN_WALKING[sprite_body.frame]	
 
-
 func _on_arm_area_body_entered(body: Node2D) -> void:
 	print("player touched: ", body.name)
-	if "butterfly" in body.name:
+	if "butterfly" in body.name and Input.is_action_pressed("Left Click") and shop.visible == false:
 		score_bar.update_score(1)
 		butterfly_spawner.total_alive_butterflies -= 1
 		body.queue_free()
+
+func update_arm_sprite(new_arm_level: int) -> void:
+	arm_level = new_arm_level
+	sprite_arm.play("arm_%s" %arm_level)
+	animation_player_arm_collision.play("arm_%s" %arm_level)
+	
