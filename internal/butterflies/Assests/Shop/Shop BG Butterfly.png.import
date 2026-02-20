@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlf4b7ixnmuwt"
-path="res://.godot/imported/Shop BG.png-7c956f9253bf6ea1bf2b2851ce43e771.ctex"
+uid="uid://um0u18nu0cq6"
+path="res://.godot/imported/Shop BG Butterfly.png-21b5b50f4801cde7bf6bc9ae7ec28264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://internal/butterflies/Assests/Shop/Shop BG.png"
-dest_files=["res://.godot/imported/Shop BG.png-7c956f9253bf6ea1bf2b2851ce43e771.ctex"]
+source_file="res://internal/butterflies/Assests/Shop/Shop BG Butterfly.png"
+dest_files=["res://.godot/imported/Shop BG Butterfly.png-21b5b50f4801cde7bf6bc9ae7ec28264.ctex"]
 
 [params]
 

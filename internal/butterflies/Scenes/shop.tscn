@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwashti8qbil8"]
 
-[ext_resource type="Texture2D" uid="uid://dlf4b7ixnmuwt" path="res://internal/butterflies/Assests/Shop/Shop BG.png" id="1_yh18p"]
+[ext_resource type="Texture2D" uid="uid://um0u18nu0cq6" path="res://internal/butterflies/Assests/Shop/Shop BG Butterfly.png" id="1_o6a70"]
 [ext_resource type="Script" uid="uid://6nlgg5sn6mvg" path="res://internal/butterflies/Scripts/shop.gd" id="2_3hl3v"]
 [ext_resource type="Shader" uid="uid://bnpgbkvhowhcv" path="res://internal/butterflies/Assests/Black.gdshader" id="2_sclc0"]
 [ext_resource type="Texture2D" uid="uid://oldex166x32j" path="res://internal/butterflies/Assests/Shop/Shop Arm1.png" id="3_3hl3v"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://desai76i3piay" path="res://internal/butterflies/Assests/Shop/Shop_Buy.png" id="7_o6a70"]
 [ext_resource type="Shader" uid="uid://phl7m58wcigg" path="res://internal/butterflies/Assests/Grey.gdshader" id="7_ocfam"]
 [ext_resource type="Texture2D" uid="uid://sdn5oyb8p8in" path="res://internal/butterflies/Assests/Shop/close_button.png" id="10_ocfam"]
+[ext_resource type="Texture2D" uid="uid://dxdmf7clwwucx" path="res://internal/butterflies/Assests/Shop/shop_butterfly_rizz.png" id="11_ocfam"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocfam"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebap1"]
 shader = ExtResource("2_sclc0")
 shader_parameter/onoff = 1.0
 
@@ -28,7 +29,7 @@ shader_parameter/onoff = 1.0
 font = ExtResource("5_sclc0")
 font_size = 96
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6a70"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocfam"]
 shader = ExtResource("2_sclc0")
 shader_parameter/onoff = 1.0
 
@@ -48,13 +49,18 @@ shader_parameter/onoff = 1.0
 shader = ExtResource("2_sclc0")
 shader_parameter/onoff = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_ocfam"]
+line_spacing = 0.0
+font = ExtResource("5_sclc0")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnrr2"]
+font = ExtResource("5_sclc0")
+font_size = 64
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awqns"]
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebap1"]
-shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bsey"]
 shader = ExtResource("7_ocfam")
@@ -81,7 +87,7 @@ offset_bottom = 396.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
-texture = ExtResource("1_yh18p")
+texture = ExtResource("1_o6a70")
 script = ExtResource("2_3hl3v")
 
 [node name="Shop Arm" type="VBoxContainer" parent="." unique_id=1479769369]
@@ -96,12 +102,13 @@ offset_bottom = 740.0
 custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Arm/Arm1" unique_id=979921701]
-material = SubResource("ShaderMaterial_ocfam")
+[node name="Icon" type="TextureRect" parent="Shop Arm/Arm1" unique_id=2010351880]
+material = SubResource("ShaderMaterial_ebap1")
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("3_3hl3v")
+texture = ExtResource("3_3hl3v")
+stretch_mode = 2
 
 [node name="Label" type="Button" parent="Shop Arm/Arm1" unique_id=1850346464]
 custom_minimum_size = Vector2(1000, 0)
@@ -158,12 +165,13 @@ label_settings = SubResource("LabelSettings_tgn1t")
 custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Arm/Arm2" unique_id=1345678204]
-material = SubResource("ShaderMaterial_o6a70")
+[node name="Icon" type="TextureRect" parent="Shop Arm/Arm2" unique_id=216964492]
+material = SubResource("ShaderMaterial_ocfam")
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("5_4p2ie")
+texture = ExtResource("5_4p2ie")
+stretch_mode = 2
 
 [node name="Label" type="Button" parent="Shop Arm/Arm2" unique_id=217296615]
 custom_minimum_size = Vector2(1000, 0)
@@ -221,12 +229,13 @@ label_settings = SubResource("LabelSettings_tgn1t")
 custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Arm/Arm3" unique_id=1286742417]
+[node name="Icon2" type="TextureRect" parent="Shop Arm/Arm3" unique_id=1660123311]
 material = SubResource("ShaderMaterial_gnrr2")
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("6_o6a70")
+texture = ExtResource("6_o6a70")
+stretch_mode = 2
 
 [node name="Label" type="Button" parent="Shop Arm/Arm3" unique_id=1868485407]
 custom_minimum_size = Vector2(1000, 0)
@@ -279,12 +288,12 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Shop Butterfly" type="VBoxContainer" parent="." unique_id=2051543196]
-visible = false
 layout_mode = 0
 offset_left = 120.0
 offset_top = 75.0
 offset_right = 1243.0
 offset_bottom = 272.0
+scale = Vector2(0.75, 0.75)
 
 [node name="Upgrade1" type="HBoxContainer" parent="Shop Butterfly" unique_id=714616927]
 custom_minimum_size = Vector2(1456, 197)
@@ -297,17 +306,21 @@ layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("3_3hl3v")
 
-[node name="Label" type="Button" parent="Shop Butterfly/Upgrade1" unique_id=587517462]
-custom_minimum_size = Vector2(1000, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade1" unique_id=1010264500]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_sclc0")
-theme_override_font_sizes/font_size = 96
-text = "BUTTERFLY"
-flat = true
-alignment = 0
+
+[node name="Label" type="Label" parent="Shop Butterfly/Upgrade1/VBoxContainer" unique_id=39473650]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+text = "Chocolate Roses"
+label_settings = SubResource("LabelSettings_ocfam")
+
+[node name="Description" type="Label" parent="Shop Butterfly/Upgrade1/VBoxContainer" unique_id=477282051]
+layout_mode = 2
+size_flags_vertical = 2
+text = "More butterflies spawn per wave (no side effects)"
+label_settings = SubResource("LabelSettings_gnrr2")
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Butterfly/Upgrade1" unique_id=853661144]
 layout_mode = 2
@@ -352,24 +365,28 @@ label_settings = SubResource("LabelSettings_tgn1t")
 custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade2" unique_id=1054972401]
-material = SubResource("ShaderMaterial_ebap1")
+[node name="Icon" type="TextureRect" parent="Shop Butterfly/Upgrade2" unique_id=366926960]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("5_4p2ie")
+texture = ExtResource("11_ocfam")
+stretch_mode = 2
 
-[node name="Label" type="Button" parent="Shop Butterfly/Upgrade2" unique_id=1246697396]
-custom_minimum_size = Vector2(1000, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade2" unique_id=1553926281]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_sclc0")
-theme_override_font_sizes/font_size = 96
-text = "BUTTERFLY"
-flat = true
-alignment = 0
+
+[node name="Label" type="Label" parent="Shop Butterfly/Upgrade2/VBoxContainer" unique_id=92064871]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+text = "Butterfly Rizz"
+label_settings = SubResource("LabelSettings_ocfam")
+
+[node name="Description" type="Label" parent="Shop Butterfly/Upgrade2/VBoxContainer" unique_id=249666700]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Butterfly waves spawn more often"
+label_settings = SubResource("LabelSettings_gnrr2")
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Butterfly/Upgrade2" unique_id=171294179]
 layout_mode = 2
@@ -412,7 +429,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Upgrade3" type="HBoxContainer" parent="Shop Butterfly" unique_id=754467611]
-custom_minimum_size = Vector2(1456, 197)
+custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
 [node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade3" unique_id=1048533642]
@@ -422,19 +439,37 @@ layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("6_o6a70")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade3" unique_id=605359794]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Shop Butterfly/Upgrade3/VBoxContainer" unique_id=1155877326]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+text = "Better drawing"
+label_settings = SubResource("LabelSettings_ocfam")
+
+[node name="Description" type="Label" parent="Shop Butterfly/Upgrade3/VBoxContainer" unique_id=1643280150]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Butterflies are worth +1"
+label_settings = SubResource("LabelSettings_gnrr2")
+
 [node name="Label" type="Button" parent="Shop Butterfly/Upgrade3" unique_id=1112717899]
-custom_minimum_size = Vector2(1000, 0)
+visible = false
+custom_minimum_size = Vector2(1500, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_sclc0")
 theme_override_font_sizes/font_size = 96
-text = "BUTTERFLY"
+text = "Better Drawings"
 flat = true
 alignment = 0
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Butterfly/Upgrade3" unique_id=1865303270]
 layout_mode = 2
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop Butterfly/Upgrade3/CostBuy" unique_id=104899760]
 layout_mode = 2
@@ -457,6 +492,72 @@ layout_mode = 2
 texture_normal = ExtResource("7_o6a70")
 
 [node name="Buy_Label" type="Label" parent="Shop Butterfly/Upgrade3/CostBuy/Buy_Button" unique_id=1153860333]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BUY"
+label_settings = SubResource("LabelSettings_tgn1t")
+
+[node name="Upgrade4" type="HBoxContainer" parent="Shop Butterfly" unique_id=2139494297]
+custom_minimum_size = Vector2(1456, 197)
+layout_mode = 2
+
+[node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade4" unique_id=1431967485]
+material = SubResource("ShaderMaterial_quucq")
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("6_o6a70")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade4" unique_id=276203388]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Shop Butterfly/Upgrade4/VBoxContainer" unique_id=515400220]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+text = "Steroids"
+label_settings = SubResource("LabelSettings_ocfam")
+
+[node name="Description" type="Label" parent="Shop Butterfly/Upgrade4/VBoxContainer" unique_id=1119776485]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Increase arm size... watch out for the hair loss!"
+label_settings = SubResource("LabelSettings_gnrr2")
+
+[node name="CostBuy" type="VBoxContainer" parent="Shop Butterfly/Upgrade4" unique_id=1050327099]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop Butterfly/Upgrade4/CostBuy" unique_id=481228534]
+layout_mode = 2
+alignment = 1
+
+[node name="Cost" type="Label" parent="Shop Butterfly/Upgrade4/CostBuy/HBoxContainer" unique_id=1230325541]
+layout_mode = 2
+text = "20 "
+label_settings = SubResource("LabelSettings_bpve2")
+horizontal_alignment = 1
+
+[node name="Butterfly" type="TextureRect" parent="Shop Butterfly/Upgrade4/CostBuy/HBoxContainer" unique_id=1340786132]
+layout_mode = 2
+texture = ExtResource("6_4p2ie")
+expand_mode = 2
+
+[node name="Buy_Button" type="TextureButton" parent="Shop Butterfly/Upgrade4/CostBuy" unique_id=862218194]
+material = SubResource("ShaderMaterial_40pah")
+layout_mode = 2
+texture_normal = ExtResource("7_o6a70")
+
+[node name="Buy_Label" type="Label" parent="Shop Butterfly/Upgrade4/CostBuy/Buy_Button" unique_id=1663339639]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -7,6 +7,9 @@ extends TextureRect
 
 @onready var player = $"../Player"
 
+const shop_arm_bg = preload("res://internal/butterflies/Assests/Shop/Shop BG Arm.png")
+const shop_butterfly_bg = preload("res://internal/butterflies/Assests/Shop/Shop BG Butterfly.png")
+
 var shop_elements: Dictionary[String, Dictionary]
 
 func _ready() -> void:
@@ -66,9 +69,11 @@ func open_shop(shop: String) -> void:
 	update_shop(shop)
 	self.visible = true
 	if shop == "arm":
+		self.texture = shop_arm_bg
 		shop_arm.visible = true
 		shop_buttefly.visible = false
 	elif shop == "butterfly":
+		self.texture = shop_butterfly_bg
 		shop_buttefly.visible = true
 		shop_arm.visible = false
 	else:
