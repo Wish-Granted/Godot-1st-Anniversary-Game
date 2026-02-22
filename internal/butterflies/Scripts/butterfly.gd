@@ -26,6 +26,8 @@ var target_rotation := 0.0
 var rotation_speed := 2
 var rotation_timeout = false
 
+var butterfly_variation := "basic"
+
 func _ready() -> void:
 	collision_polygon.scale = Vector2(0,0)
 	var size = randf_range(min_size, max_size)
@@ -96,7 +98,7 @@ func do_movement():
 	target_rotation = deg_to_rad(get_valid_rotation(-180, 180))
 	print_if_debug("Start rotate")
 	sprite_butterfly.speed_scale = 0.7
-	sprite_butterfly.play("flapping")
+	sprite_butterfly.play("%s_flapping" %butterfly_variation)
 	is_rotating = true
 	rotation_timer.start()
 
@@ -114,7 +116,7 @@ func do_idle():
 	print_if_debug("starting idle")
 	is_idle = true
 	previous_action = "idle"
-	sprite_butterfly.play("idle")
+	sprite_butterfly.play("%s_idle" %butterfly_variation)
 	idle_timer.wait_time = randf_range(0.5, 3.0)
 	idle_timer.start()
 	await idle_timer.timeout

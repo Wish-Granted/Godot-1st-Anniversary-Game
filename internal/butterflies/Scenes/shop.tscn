@@ -12,6 +12,8 @@
 [ext_resource type="Shader" uid="uid://phl7m58wcigg" path="res://internal/butterflies/Assests/Grey.gdshader" id="7_ocfam"]
 [ext_resource type="Texture2D" uid="uid://sdn5oyb8p8in" path="res://internal/butterflies/Assests/Shop/close_button.png" id="10_ocfam"]
 [ext_resource type="Texture2D" uid="uid://dxdmf7clwwucx" path="res://internal/butterflies/Assests/Shop/shop_butterfly_rizz.png" id="11_ocfam"]
+[ext_resource type="Texture2D" uid="uid://fy62nb6f3wop" path="res://internal/butterflies/Assests/Shop/shop_butterfly_chocolate_roses.png" id="11_tgn1t"]
+[ext_resource type="Texture2D" uid="uid://paqvkilqbey1" path="res://internal/butterflies/Assests/Shop/better_drawings.png" id="13_gnrr2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebap1"]
 shader = ExtResource("2_sclc0")
@@ -45,10 +47,6 @@ shader_parameter/onoff = 1.0
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bu4i4"]
-shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 0.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_ocfam"]
 line_spacing = 0.0
 font = ExtResource("5_sclc0")
@@ -66,13 +64,13 @@ shader_parameter/onoff = 1.0
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_quucq"]
-shader = ExtResource("2_sclc0")
-shader_parameter/onoff = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_40pah"]
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_quucq"]
+shader = ExtResource("2_sclc0")
+shader_parameter/onoff = 0.0
 
 [node name="shop" type="TextureRect" unique_id=731039237]
 anchors_preset = 8
@@ -110,17 +108,14 @@ size_flags_vertical = 4
 texture = ExtResource("3_3hl3v")
 stretch_mode = 2
 
-[node name="Label" type="Button" parent="Shop Arm/Arm1" unique_id=1850346464]
+[node name="Label" type="Label" parent="Shop Arm/Arm1" unique_id=526370273]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_sclc0")
 theme_override_font_sizes/font_size = 96
 text = "Growth Hormones (No scam!)"
-flat = true
-alignment = 0
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Arm/Arm1" unique_id=19852041]
 layout_mode = 2
@@ -173,17 +168,14 @@ size_flags_vertical = 4
 texture = ExtResource("5_4p2ie")
 stretch_mode = 2
 
-[node name="Label" type="Button" parent="Shop Arm/Arm2" unique_id=217296615]
+[node name="Label" type="Label" parent="Shop Arm/Arm2" unique_id=149545117]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_sclc0")
 theme_override_font_sizes/font_size = 96
 text = "A net..."
-flat = true
-alignment = 0
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Arm/Arm2" unique_id=2067673349]
 layout_mode = 2
@@ -229,7 +221,7 @@ label_settings = SubResource("LabelSettings_tgn1t")
 custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
-[node name="Icon2" type="TextureRect" parent="Shop Arm/Arm3" unique_id=1660123311]
+[node name="Icon" type="TextureRect" parent="Shop Arm/Arm3" unique_id=1660123311]
 material = SubResource("ShaderMaterial_gnrr2")
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -237,7 +229,7 @@ size_flags_vertical = 4
 texture = ExtResource("6_o6a70")
 stretch_mode = 2
 
-[node name="Label" type="Button" parent="Shop Arm/Arm3" unique_id=1868485407]
+[node name="Label" type="Label" parent="Shop Arm/Arm3" unique_id=1536641362]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -245,8 +237,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_sclc0")
 theme_override_font_sizes/font_size = 96
 text = "Women, am I right??"
-flat = true
-alignment = 0
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Arm/Arm3" unique_id=2124328214]
 layout_mode = 2
@@ -288,6 +278,7 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
 [node name="Shop Butterfly" type="VBoxContainer" parent="." unique_id=2051543196]
+visible = false
 layout_mode = 0
 offset_left = 120.0
 offset_top = 75.0
@@ -299,12 +290,12 @@ scale = Vector2(0.75, 0.75)
 custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade1" unique_id=1531337351]
-material = SubResource("ShaderMaterial_bu4i4")
+[node name="Icon" type="TextureRect" parent="Shop Butterfly/Upgrade1" unique_id=1699175089]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("3_3hl3v")
+texture = ExtResource("11_tgn1t")
+stretch_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade1" unique_id=1010264500]
 layout_mode = 2
@@ -319,7 +310,7 @@ label_settings = SubResource("LabelSettings_ocfam")
 [node name="Description" type="Label" parent="Shop Butterfly/Upgrade1/VBoxContainer" unique_id=477282051]
 layout_mode = 2
 size_flags_vertical = 2
-text = "More butterflies spawn per wave (no side effects)"
+text = "More butterflies spawn per wave! (not given out by force)"
 label_settings = SubResource("LabelSettings_gnrr2")
 
 [node name="CostBuy" type="VBoxContainer" parent="Shop Butterfly/Upgrade1" unique_id=853661144]
@@ -432,12 +423,12 @@ label_settings = SubResource("LabelSettings_tgn1t")
 custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
 
-[node name="Icon" type="TextureButton" parent="Shop Butterfly/Upgrade3" unique_id=1048533642]
-material = SubResource("ShaderMaterial_quucq")
+[node name="Icon" type="TextureRect" parent="Shop Butterfly/Upgrade3" unique_id=852835715]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("6_o6a70")
+texture = ExtResource("13_gnrr2")
+stretch_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Shop Butterfly/Upgrade3" unique_id=605359794]
 layout_mode = 2
