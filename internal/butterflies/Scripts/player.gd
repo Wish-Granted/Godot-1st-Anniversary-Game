@@ -78,6 +78,8 @@ func _on_arm_area_body_entered(body: Node2D) -> void:
 
 func update_arm_sprite(new_arm_level: int) -> void:
 	arm_level = new_arm_level
+	if arm_level >= 2:
+		sprite_arm.scale = Vector2(1,1.5)
 	sprite_arm.play("arm_%s" %arm_level)
 	animation_player_arm_collision.play("arm_%s" %arm_level)
 	

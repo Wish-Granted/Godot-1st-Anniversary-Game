@@ -7,6 +7,9 @@ extends TextureRect
 
 @onready var player = $"../Player"
 
+@onready var chocolate_rose_spawner = $"../Chocolate Rose Spawner"
+@onready var butterfly_spawner = $"../Butterfly Spawner"
+
 const shop_arm_bg = preload("res://internal/butterflies/Assests/Shop/Shop BG Arm.png")
 const shop_butterfly_bg = preload("res://internal/butterflies/Assests/Shop/Shop BG Butterfly.png")
 
@@ -14,11 +17,12 @@ var shop_elements: Dictionary[String, Dictionary]
 
 func _ready() -> void:
 	init_element_dictionary()
-	
+
 func init_element_dictionary():
 	shop_elements = {
 	"arm": {
 		"1": {
+			"id"          : "arm1",
 			"container"   : $"Shop Arm/Arm1",
 			"icon"        : $"Shop Arm/Arm1/Icon",
 			"cost_and_buy": $"Shop Arm/Arm1/CostBuy",
@@ -26,6 +30,7 @@ func init_element_dictionary():
 			"buy_button"  : $"Shop Arm/Arm1/CostBuy/Buy_Button"
 		},
 		"2": {
+			"id"          : "arm2",
 			"container"   : $"Shop Arm/Arm2",
 			"icon"        : $"Shop Arm/Arm2/Icon",
 			"cost_and_buy": $"Shop Arm/Arm2/CostBuy",
@@ -33,6 +38,7 @@ func init_element_dictionary():
 			"buy_button"  : $"Shop Arm/Arm2/CostBuy/Buy_Button"
 		},
 		"3": {
+			"id"          : "arm3",
 			"container"   : $"Shop Arm/Arm3",
 			"icon"        : $"Shop Arm/Arm3/Icon",
 			"cost_and_buy": $"Shop Arm/Arm3/CostBuy",
@@ -41,26 +47,37 @@ func init_element_dictionary():
 		}
 	},
 	"butterfly": {
-		"upgrade1": {
+		"1": {
+			"id"          : "butterfly1",
 			"container"   : $"Shop Butterfly/Upgrade1",
 			"icon"        : $"Shop Butterfly/Upgrade1/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade1/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade1/CostBuy/HBoxContainer/Cost",
 			"buy_button"  : $"Shop Butterfly/Upgrade1/CostBuy/Buy_Button"
 		},
-		"upgrade2": {
+		"2": {
+			"id"          : "butterfly2",
 			"container"   : $"Shop Butterfly/Upgrade2",
 			"icon"        : $"Shop Butterfly/Upgrade2/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade2/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade2/CostBuy/HBoxContainer/Cost",
 			"buy_button"  : $"Shop Butterfly/Upgrade2/CostBuy/Buy_Button"
 		},
-		"upgrade3": {
+		"3": {
+			"id"          : "butterfly3",
 			"container"   : $"Shop Butterfly/Upgrade3",
 			"icon"        : $"Shop Butterfly/Upgrade3/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade3/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade3/CostBuy/HBoxContainer/Cost",
 			"buy_button"  : $"Shop Butterfly/Upgrade3/CostBuy/Buy_Button"
+		},
+		"4": {
+			"id"          : "butterfly4",
+			"container"   : $"Shop Butterfly/Upgrade4",
+			"icon"        : $"Shop Butterfly/Upgrade4/Icon",
+			"cost_and_buy": $"Shop Butterfly/Upgrade4/CostBuy",
+			"cost"        : $"Shop Butterfly/Upgrade4/CostBuy/HBoxContainer/Cost",
+			"buy_button"  : $"Shop Butterfly/Upgrade4/CostBuy/Buy_Button"
 		}
 	}
 }
@@ -117,20 +134,42 @@ func update_shop(shop: String) -> void:
 		else:
 			set_shader(shop_item["buy_button"], true)
 
+func buy_item(upgrade: Dictionary) -> void:
+	#upgrade should be as shop_elements[shop][upgrade_number]
+	var cost = int(upgrade["cost"].text)
+	if score_bar.current_butterfly_count >= cost:
+		score_bar.update_score(cost*-1)
+		if "arm" in upgrade["id"]:
+			player.update_arm_sprite(int(str(upgrade["id"]).get_slice("arm", 1)))
+			update_shop("arm")
+		elif "butterfly" in upgrade["id"]:
+			if upgrade["id"] == "butterfly1":
+				chocolate_rose_spawner.add_new_rose()
+				butterfly_spawner.number_of_butterflies_each_wave += 100
+				butterfly_spawner.update_max_butterflies()
+			elif upgrade["id"] == "butterfly2":
+				butterfly_spawner.rizz_butterfly_chance += 0.05
+				butterfly_spawner.time_between_waves -= 0.2
+			elif upgrade["id"] == "butterfly3":
+				butterfly_spawner.improved_butterfly_chance += 0.1
+			elif upgrade["id"] == "butterfly4":
+				pass
+			
+
 func _on_arm1_buy_button_pressed() -> void:
-	if score_bar.current_butterfly_count >= int(shop_elements["arm"]["1"]["cost"].text):
-		score_bar.update_score(-20)
-		player.update_arm_sprite(1)
-		update_shop("arm")
+	buy_item(shop_elements["arm"]["1"])
 
 func _on_arm2_buy_button_pressed() -> void:
-	if score_bar.current_butterfly_count >= int(shop_elements["arm"]["1"]["cost"].text):
-		score_bar.update_score(-100)
-		player.update_arm_sprite(1)
-		update_shop("arm")
+	buy_item(shop_elements["arm"]["2"])
 
 func _on_arm3_buy_button_pressed() -> void:
-	if score_bar.current_butterfly_count >= int(shop_elements["arm"]["1"]["cost"].text):
-		score_bar.update_score(-1000)
-		player.update_arm_sprite(1)
-		update_shop("arm")
+	buy_item(shop_elements["arm"]["3"])
+
+func _on_upgrade1_buy_button_pressed() -> void:
+	buy_item(shop_elements["butterfly"]["1"])
+
+func _on_upgrade2_buy_button_pressed() -> void:
+	buy_item(shop_elements["butterfly"]["2"])
+
+func _on_upgrade3_buy_button_pressed() -> void:
+	buy_item(shop_elements["butterfly"]["3"])

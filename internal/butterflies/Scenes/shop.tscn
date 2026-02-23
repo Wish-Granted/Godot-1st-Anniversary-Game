@@ -322,7 +322,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade1/CostBuy/HBoxContainer" unique_id=580526886]
 layout_mode = 2
-text = "20 "
+text = "1 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -389,7 +389,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade2/CostBuy/HBoxContainer" unique_id=2019295367]
 layout_mode = 2
-text = "20 "
+text = "1 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -443,7 +443,7 @@ label_settings = SubResource("LabelSettings_ocfam")
 [node name="Description" type="Label" parent="Shop Butterfly/Upgrade3/VBoxContainer" unique_id=1643280150]
 layout_mode = 2
 size_flags_vertical = 2
-text = "Butterflies are worth +1"
+text = "More valuable butterflies!"
 label_settings = SubResource("LabelSettings_gnrr2")
 
 [node name="Label" type="Button" parent="Shop Butterfly/Upgrade3" unique_id=1112717899]
@@ -468,7 +468,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade3/CostBuy/HBoxContainer" unique_id=1960933992]
 layout_mode = 2
-text = "20 "
+text = "1 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -534,7 +534,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade4/CostBuy/HBoxContainer" unique_id=1230325541]
 layout_mode = 2
-text = "20 "
+text = "1 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -578,4 +578,7 @@ expand_icon = true
 [connection signal="pressed" from="Shop Arm/Arm1/CostBuy/Buy_Button" to="." method="_on_arm1_buy_button_pressed"]
 [connection signal="pressed" from="Shop Arm/Arm2/CostBuy/Buy_Button" to="." method="_on_arm2_buy_button_pressed"]
 [connection signal="pressed" from="Shop Arm/Arm3/CostBuy/Buy_Button" to="." method="_on_arm3_buy_button_pressed"]
+[connection signal="pressed" from="Shop Butterfly/Upgrade1/CostBuy/Buy_Button" to="." method="_on_upgrade1_buy_button_pressed"]
+[connection signal="pressed" from="Shop Butterfly/Upgrade2/CostBuy/Buy_Button" to="." method="_on_upgrade2_buy_button_pressed"]
+[connection signal="pressed" from="Shop Butterfly/Upgrade3/CostBuy/Buy_Button" to="." method="_on_upgrade3_buy_button_pressed"]
 [connection signal="pressed" from="Close Button" to="." method="_on_close_button_pressed"]

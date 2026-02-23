@@ -27,8 +27,11 @@ var rotation_speed := 2
 var rotation_timeout = false
 
 var butterfly_variation := "basic"
+# basic, basic_rizz, improved, improved_rizz, dylan
 
 func _ready() -> void:
+	sprite_butterfly.play("%s_idle" %butterfly_variation)
+	
 	collision_polygon.scale = Vector2(0,0)
 	var size = randf_range(min_size, max_size)
 	var size_tween = collision_polygon.create_tween()
@@ -36,7 +39,6 @@ func _ready() -> void:
 	size_tween.tween_property(collision_polygon, "scale", Vector2(size, size), 1.5)
 	size_tween.tween_callback(func(): do_idle())
 	print_if_debug("butterfly_size: ", snappedf(size,0.01))
-	#collision_polygon.scale = Vector2(size, size)
 
 func _physics_process(delta: float) -> void:
 	#if doing nothing

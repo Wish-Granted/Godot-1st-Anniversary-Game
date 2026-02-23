@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://is6ymvvqhg6a" path="res://internal/butterflies/Scenes/player.tscn" id="3_pyjba"]
 [ext_resource type="PackedScene" uid="uid://famicpuqvygt" path="res://internal/butterflies/Scenes/butterfly_spawner.tscn" id="4_t182p"]
 [ext_resource type="PackedScene" uid="uid://05ko2r1kk5rh" path="res://internal/butterflies/Scenes/score_bar.tscn" id="6_pyjba"]
+[ext_resource type="PackedScene" uid="uid://bpa4bxlwps78j" path="res://internal/butterflies/Scenes/chocolate_rose_spawner.tscn" id="7_roiwj"]
 [ext_resource type="PackedScene" uid="uid://blig6d54h7h7i" path="res://internal/butterflies/Scenes/shop_buttons.tscn" id="7_t182p"]
 [ext_resource type="PackedScene" uid="uid://cwashti8qbil8" path="res://internal/butterflies/Scenes/shop.tscn" id="8_m5ffy"]
 [ext_resource type="PackedScene" uid="uid://cmsfisy7udl8c" path="res://internal/butterflies/Scenes/close_uis.tscn" id="9_8lbuh"]
@@ -117,6 +118,9 @@ shape = SubResource("WorldBoundaryShape2D_m5ffy")
 position = Vector2(0, 500)
 shape = SubResource("WorldBoundaryShape2D_8lbuh")
 
+[node name="Chocolate Rose Spawner" parent="." unique_id=413163488 instance=ExtResource("7_roiwj")]
+position = Vector2(0, 400)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=386802069]
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAD4/wMAAAAEAAAAAAD4/wQAAAAJAAAAAAD5/wMAAAAEAAAAAAD5/wQAAAAJAAAAAAD6/wMAAAAEAAAAAAD6/wQAAAAJAAAAAAD7/wMAAAAEAAEAAAD7/wQAAAAJAAAAAAD8/wMAAAAEAAAAAAD8/wQAAAAJAAAAAAD9/wMAAAAEAAAAAAD9/wQAAAAJAAAAAAD+/wMAAAAEAAAAAAD+/wQAAAAJAAAAAAD//wMAAAAEAAEAAAD//wQAAAAJAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAJAAAAAAABAAMAAAAEAAAAAAABAAQAAAAJAAAAAAACAAMAAAAEAAEAAAACAAQAAAAJAAAAAAADAAMAAAAEAAEAAAADAAQAAAAJAAAAAAAEAAMAAAAEAAEAAAAEAAQAAAAJAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAAJAAAAAAAGAAMAAAAEAAAAAAAGAAQAAAAJAAAAAAAHAAMAAAAEAAAAAAAHAAQAAAAJAAAAAAD4/wUAAAAJAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAJAAAAAAD7/wUAAAAJAAAAAAD8/wUAAAAJAAAAAAD9/wUAAAAJAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAJAAAAAAAAAAUAAAAJAAAAAAABAAUAAAAJAAAAAAACAAUAAAAJAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAJAAAAAAAFAAUAAAAJAAAAAAAGAAUAAAAJAAAAAAAHAAUAAAAJAAAAAAD3/wUAAAAJAAAAAAD3/wQAAAAJAAAAAAAIAAQAAAAJAAAAAAAIAAUAAAAJAAAAAAAIAAMAAAAEAAEAAAD3/wMAAAAEAAEAAAA=")
@@ -129,6 +133,7 @@ position = Vector2(-231, 179)
 position = Vector2(-960, -495)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1183530398]
+zoom = Vector2(1, 1.1)
 
 [node name="Score_Bar" parent="." unique_id=1088130321 instance=ExtResource("6_pyjba")]
 offset_left = -136.0

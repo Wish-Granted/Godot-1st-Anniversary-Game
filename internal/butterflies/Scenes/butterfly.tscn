@@ -130,7 +130,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_sb6d8")
 }],
 "loop": true,
-"name": &"francia_flapping",
+"name": &"improved_flapping",
 "speed": 7.0
 }, {
 "frames": [{
@@ -138,7 +138,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vi683")
 }],
 "loop": true,
-"name": &"francia_idle",
+"name": &"improved_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -149,7 +149,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mul1g")
 }],
 "loop": true,
-"name": &"francia_rizz_flapping",
+"name": &"improved_rizz_flapping",
 "speed": 7.0
 }, {
 "frames": [{
@@ -157,7 +157,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fqkjv")
 }],
 "loop": true,
-"name": &"francia_rizz_idle",
+"name": &"improved_rizz_idle",
 "speed": 5.0
 }]
 
@@ -181,7 +181,7 @@ polygon = PackedVector2Array(-121, -91, -52, 98, 1, 36, 51, 93, 120, -96, 49, -8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionPolygon2D" unique_id=1560919267]
 sprite_frames = SubResource("SpriteFrames_l48ao")
-animation = &"dylan_idle"
+animation = &"improved_idle"
 autoplay = "basic_idle"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1758540208]

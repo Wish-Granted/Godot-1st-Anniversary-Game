@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bpa4bxlwps78j"]
+
+[ext_resource type="Script" uid="uid://eoke74xnq64g" path="res://internal/butterflies/Scripts/chocolate_rose_spawner.gd" id="1_bg2na"]
+[ext_resource type="Texture2D" uid="uid://cdc5elds5sole" path="res://internal/butterflies/Assests/chocolate_rose.png" id="2_xc0bh"]
+
+[node name="Chocolate Rose Spawner" type="Node2D" unique_id=413163488]
+script = ExtResource("1_bg2na")
+width = 1920
+
+[node name="chocolate_rose_0" type="Sprite2D" parent="." unique_id=1146753272]
+visible = false
+position = Vector2(0, 10)
+texture = ExtResource("2_xc0bh")
+offset = Vector2(5, -59)

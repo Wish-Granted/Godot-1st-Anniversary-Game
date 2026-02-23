@@ -8,11 +8,14 @@ const butterfly_scene = preload("res://internal/butterflies/Scenes/butterfly.tsc
 @onready var butterflies = $Butterflies
 @onready var wave_timer = $"Wave Timer"
 
-var total_alive_butterflies = 0
-var total_butterflies_spawned = 0
+var total_alive_butterflies := 0
+var total_butterflies_spawned := 0
 var time_between_waves := 5
 var number_of_butterflies_each_wave := 2
 var max_butterflies = number_of_butterflies_each_wave * 5
+
+var rizz_butterfly_chance := 0.0
+var improved_butterfly_chance := 0.0
 
 func _ready() -> void:
 	debug_border.clear_points()
@@ -37,6 +40,30 @@ func spawn_butterfly_wave():
 		new_butterfly.position = spawn_position
 		new_butterfly.rotation_degrees = randi_range(0,360)
 		new_butterfly.visible = false
+		
+		var rizz: bool
+		var improved: bool
+		var dylan: bool
+		
+		if randi_range(0,1) < rizz_butterfly_chance: # eg change is 0.1
+			rizz = true
+		if randi_range(0,1) < improved_butterfly_chance:
+			improved = true
+		if randi_range(0,1) < 0.01:
+			dylan = true
+		
+		if not rizz and not improved:
+			new_butterfly.butterfly_variation = "basic"
+		elif rizz and not improved:
+			new_butterfly.butterfly_variation = "basic_rizz"
+		elif not rizz and improved:
+			new_butterfly.butterfly_variation = "improved"
+		elif rizz and improved and not dylan:
+			new_butterfly.butterfly_variation = "improved_rizz"
+		elif rizz and improved and dylan:
+			new_butterfly.butterfly_variation = "dylan"
+
+			
 		new_butterflies.append(new_butterfly)
 		butterflies.add_child(new_butterfly)
 		total_butterflies_spawned += 1
@@ -52,5 +79,5 @@ func do_wave_loop():
 	await wave_timer.timeout
 	do_wave_loop()
 	
-	
-	
+func update_max_butterflies():
+	max_butterflies = number_of_butterflies_each_wave * 5
