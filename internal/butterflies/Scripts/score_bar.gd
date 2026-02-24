@@ -11,10 +11,11 @@ const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_ico
 @onready var shop := $"../shop"
 
 var current_butterfly_count = 0
+var float_font_scale = 1.0
 
 func _ready() -> void:
 	update_score(0)
-
+	
 func update_score(delta_butterflies: int) -> int:
 	# 1. Add/ remove icons
 	if delta_butterflies > 0:
@@ -22,6 +23,7 @@ func update_score(delta_butterflies: int) -> int:
 			var rect = TextureRect.new()
 			rect.texture = butterfly_icon
 			rect.expand_mode = TextureRect.EXPAND_KEEP_SIZE
+			rect.stretch_mode = TextureRect.STRETCH_KEEP
 			butterfly_display.add_child(rect)
 	elif delta_butterflies < 0:
 		for i in range(delta_butterflies*-1):
@@ -43,6 +45,13 @@ func update_score(delta_butterflies: int) -> int:
 	else:
 		# Reset to default spacing if under the limit
 		butterfly_display.add_theme_constant_override("separation", 0)
+	
+	if self.size.x*self.scale.x > 1900:
+		while self.size.x*self.scale.x > 1900:
+			float_font_scale *= 1.001
+			butterfly_counter.label_settings.font_size = 64*float_font_scale
+			butterfly_counter.label_settings.outline_size = 16*float_font_scale
+			self.scale *= Vector2(0.999,0.999)
 	
 	if current_butterfly_count == 5:
 		shop_buttons.show_shop_button("arm")
