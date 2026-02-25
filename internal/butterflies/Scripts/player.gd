@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 var arm_ready := true
 var arm_level := 0
+var arm_scale_level = 0
 
 const SPEED = 400
 const JUMP_VELOCITY = -1600
@@ -72,14 +73,17 @@ func _on_animated_sprite_2d_body_frame_changed() -> void:
 func _on_arm_area_body_entered(body: Node2D) -> void:
 	print("player touched: ", body.name)
 	if "butterfly" in body.name and Input.is_action_pressed("Left Click") and shop.visible == false:
-		score_bar.update_score(1)
+		if body.get_meta("improved") == true or body.get_meta("dylan") == true:
+			score_bar.update_score(10)
+		else:
+			score_bar.update_score(1)
 		butterfly_spawner.total_alive_butterflies -= 1
 		body.queue_free()
 
 func update_arm_sprite(new_arm_level: int) -> void:
 	arm_level = new_arm_level
 	if arm_level >= 2:
-		sprite_arm.scale = Vector2(1,1.5)
+		sprite_arm.scale = Vector2(1,1.5) + Vector2(0,0.5) * arm_scale_level
 	sprite_arm.play("arm_%s" %arm_level)
 	animation_player_arm_collision.play("arm_%s" %arm_level)
 	

@@ -46,8 +46,8 @@ func update_score(delta_butterflies: int) -> int:
 		# Reset to default spacing if under the limit
 		butterfly_display.add_theme_constant_override("separation", 0)
 	
-	if self.size.x*self.scale.x > 1900:
-		while self.size.x*self.scale.x > 1900:
+	if self.size.x*self.scale.x > 1850:
+		while self.size.x*self.scale.x > 1850:
 			float_font_scale *= 1.001
 			butterfly_counter.label_settings.font_size = 64*float_font_scale
 			butterfly_counter.label_settings.outline_size = 16*float_font_scale
@@ -58,5 +58,4 @@ func update_score(delta_butterflies: int) -> int:
 	elif current_butterfly_count == 10:
 		shop_buttons.show_shop_button("butterfly")
 	
-	#print(current_butterfly_count)
 	return current_butterfly_count

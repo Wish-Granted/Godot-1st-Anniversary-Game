@@ -41,26 +41,26 @@ func spawn_butterfly_wave():
 		new_butterfly.rotation_degrees = randi_range(0,360)
 		new_butterfly.visible = false
 		
-		var rizz: bool
-		var improved: bool
-		var dylan: bool
+		new_butterfly.set_meta("rizz", false)
+		new_butterfly.set_meta("improved", false)
+		new_butterfly.set_meta("dylan", false)
 		
-		if randi_range(0,1) < rizz_butterfly_chance: # eg change is 0.1
-			rizz = true
-		if randi_range(0,1) < improved_butterfly_chance:
-			improved = true
-		if randi_range(0,1) < 0.01:
-			dylan = true
-		
-		if not rizz and not improved:
+		if randf_range(0,1) < rizz_butterfly_chance: # eg change is 0.1
+			new_butterfly.set_meta("rizz", true)
+		if randf_range(0,1) < improved_butterfly_chance:
+			new_butterfly.set_meta("improved", true)
+		if randf_range(0,1) < 0.01:
+			new_butterfly.set_meta("dylan", true)
+			
+		if not new_butterfly.get_meta("rizz") and not new_butterfly.get_meta("improved"):
 			new_butterfly.butterfly_variation = "basic"
-		elif rizz and not improved:
+		elif new_butterfly.get_meta("rizz") and not new_butterfly.get_meta("improved"):
 			new_butterfly.butterfly_variation = "basic_rizz"
-		elif not rizz and improved:
+		elif not new_butterfly.get_meta("rizz") and new_butterfly.get_meta("improved"):
 			new_butterfly.butterfly_variation = "improved"
-		elif rizz and improved and not dylan:
+		elif new_butterfly.get_meta("rizz") and new_butterfly.get_meta("improved") and not new_butterfly.get_meta("dylan"):
 			new_butterfly.butterfly_variation = "improved_rizz"
-		elif rizz and improved and dylan:
+		elif new_butterfly.get_meta("rizz") and new_butterfly.get_meta("improved") and new_butterfly.get_meta("dylan"):
 			new_butterfly.butterfly_variation = "dylan"
 
 			

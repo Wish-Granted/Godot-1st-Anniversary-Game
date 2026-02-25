@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bbjvs2v2uowt0"]
+
+[ext_resource type="Texture2D" uid="uid://d0w3cakdut75y" path="res://internal/butterflies/Assests/dylan_talking.png" id="1_bnb5r"]
+[ext_resource type="Texture2D" uid="uid://bhtioi0dgpj0p" path="res://internal/butterflies/Assests/temp_speech.png" id="2_np3oq"]
+[ext_resource type="FontFile" uid="uid://cjsc0rntpenjp" path="res://internal/butterflies/Assests/ARLRDBD.TTF" id="3_wy8n4"]
+[ext_resource type="Script" uid="uid://c0w12k1f6pinp" path="res://internal/butterflies/Scripts/typewriter_effect.gd" id="4_8qc5v"]
+
+[sub_resource type="Theme" id="Theme_5ur6g"]
+default_font = ExtResource("3_wy8n4")
+default_font_size = 48
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 12
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_biuxg"]
+script = ExtResource("4_8qc5v")
+metadata/_custom_type_script = "uid://c0w12k1f6pinp"
+
+[node name="Talking_Container" type="HBoxContainer" unique_id=395525783]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -639.0
+offset_top = -255.0
+offset_right = 639.0
+offset_bottom = 289.0
+grow_horizontal = 2
+scale = Vector2(1.25, 1.25)
+pivot_offset_ratio = Vector2(0.5, 0)
+alignment = 1
+
+[node name="Character_Headshot" type="TextureRect" parent="." unique_id=1355067322]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("1_bnb5r")
+stretch_mode = 2
+flip_h = true
+
+[node name="Speech_bubble" type="TextureRect" parent="." unique_id=248418982]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_np3oq")
+stretch_mode = 2
+
+[node name="Speech" type="RichTextLabel" parent="Speech_bubble" unique_id=1867281202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -96.0
+offset_right = 480.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = SubResource("Theme_5ur6g")
+bbcode_enabled = true
+text = "[type speed=50]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_biuxg")]

@@ -1,0 +1,58 @@
+[gd_scene format=4 uid="uid://fmeub2tm17eo"]
+
+[ext_resource type="Texture2D" uid="uid://ccvkscd77fle6" path="res://internal/butterflies/Assests/tile_sprite_sheet.png" id="1_htd32"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rngct"]
+texture = ExtResource("1_htd32")
+texture_region_size = Vector2i(256, 256)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/probability = 0.5
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -80, 128, -80, 128, 96, -128, 96)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 128, -80, 128, 96, -80, 96)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-97.28, -128, 87.03999, -128, 87.03999, -87.04, 128, -87.04, 128, 97.28, -97.28, 97.28)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 97.28, -128, 97.28)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -80, 128, -80, 128, 128, -128, 128)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 128, -80, 128, 128, -76.8, 128)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 87.03999, -128, 87.03999, -87.04, 128, -87.04, 128, 128, -128, 128)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-76.8, -128, 128, -128, 128, 97.28, -76.8, 97.28)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-76.8, -128, 128, -128, 128, 128, -76.8, 128)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -80, 128, -80, 128, 96, -128, 96)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 128, -80, 128, 96, -80, 96)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-97.28, -128, 87.03999, -128, 87.03999, -87.04, 128, -87.04, 128, 97.28, -97.28, 97.28)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 97.28, -128, 97.28)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -80, 128, -80, 128, 128, -128, 128)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -80, 128, -80, 128, 128, -76.8, 128)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 87.03999, -128, 87.03999, -87.04, 128, -87.04, 128, 128, -128, 128)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-76.8, -128, 128, -128, 128, 97.28, -76.8, 97.28)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-76.8, -128, 128, -128, 128, 128, -76.8, 128)
+
+[sub_resource type="TileSet" id="TileSet_tmn7y"]
+tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
+sources/0 = SubResource("TileSetAtlasSource_rngct")
+
+[node name="TileMapLayer" type="TileMapLayer" unique_id=15807233]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD4/wMAAAAEAAAAAAD4/wQAAAAJAAAAAAD5/wMAAAAEAAAAAAD5/wQAAAAJAAAAAAD6/wMAAAAEAAAAAAD6/wQAAAAJAAAAAAD7/wMAAAAEAAEAAAD7/wQAAAAJAAAAAAD8/wMAAAAEAAAAAAD8/wQAAAAJAAAAAAD9/wMAAAAEAAAAAAD9/wQAAAAJAAAAAAD+/wMAAAAEAAAAAAD+/wQAAAAJAAAAAAD//wMAAAAEAAEAAAD//wQAAAAJAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAJAAAAAAABAAMAAAAEAAAAAAABAAQAAAAJAAAAAAACAAMAAAAEAAEAAAACAAQAAAAJAAAAAAADAAMAAAAEAAEAAAADAAQAAAAJAAAAAAAEAAMAAAAEAAEAAAAEAAQAAAAJAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAAJAAAAAAAGAAMAAAAEAAAAAAAGAAQAAAAJAAAAAAAHAAMAAAAEAAAAAAAHAAQAAAAJAAAAAAD4/wUAAAAJAAAAAAD5/wUAAAAJAAAAAAD6/wUAAAAJAAAAAAD7/wUAAAAJAAAAAAD8/wUAAAAJAAAAAAD9/wUAAAAJAAAAAAD+/wUAAAAJAAAAAAD//wUAAAAJAAAAAAAAAAUAAAAJAAAAAAABAAUAAAAJAAAAAAACAAUAAAAJAAAAAAADAAUAAAAJAAAAAAAEAAUAAAAJAAAAAAAFAAUAAAAJAAAAAAAGAAUAAAAJAAAAAAAHAAUAAAAJAAAAAAD3/wUAAAAJAAAAAAD3/wQAAAAJAAAAAAAIAAQAAAAJAAAAAAAIAAUAAAAJAAAAAAAIAAMAAAAEAAEAAAD3/wMAAAAEAAEAAAA=")
+tile_set = SubResource("TileSet_tmn7y")

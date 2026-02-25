@@ -3,6 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://hw2hkayjg5c2" path="res://internal/butterflies/Assests/Shop/Shop Arm.png" id="1_g6lpo"]
 [ext_resource type="Script" uid="uid://7q0e22de5m6b" path="res://internal/butterflies/Scripts/shop_buttons.gd" id="1_ka4ky"]
 [ext_resource type="Texture2D" uid="uid://dugpecutyvrsu" path="res://internal/butterflies/Assests/Shop/Shop Butterfly.png" id="2_ka4ky"]
+[ext_resource type="FontFile" uid="uid://bh7u1posc7a2t" path="res://internal/butterflies/Assests/grantedhandwriting.ttf" id="2_twf30"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gomk6"]
+font = ExtResource("2_twf30")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_ka4ky"]
 offsets = PackedFloat32Array(0, 0.1, 1)
@@ -22,8 +29,15 @@ offset_bottom = 154.0
 mouse_filter = 2
 script = ExtResource("1_ka4ky")
 
+[node name="Label" type="Label" parent="." unique_id=608890477]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Shops!"
+label_settings = SubResource("LabelSettings_gomk6")
+horizontal_alignment = 1
+
 [node name="ShopArm" type="TextureButton" parent="." unique_id=2100226840]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("1_g6lpo")
@@ -40,7 +54,6 @@ mouse_behavior_recursive = 1
 texture = SubResource("GradientTexture2D_ka4ky")
 
 [node name="ShopButterfly" type="TextureButton" parent="." unique_id=732849699]
-custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("2_ka4ky")

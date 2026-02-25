@@ -145,15 +145,16 @@ func buy_item(upgrade: Dictionary) -> void:
 		elif "butterfly" in upgrade["id"]:
 			if upgrade["id"] == "butterfly1":
 				chocolate_rose_spawner.add_new_rose()
-				butterfly_spawner.number_of_butterflies_each_wave += 100
+				butterfly_spawner.number_of_butterflies_each_wave += 1
 				butterfly_spawner.update_max_butterflies()
 			elif upgrade["id"] == "butterfly2":
 				butterfly_spawner.rizz_butterfly_chance += 0.05
 				butterfly_spawner.time_between_waves -= 0.2
 			elif upgrade["id"] == "butterfly3":
-				butterfly_spawner.improved_butterfly_chance += 0.1
+				butterfly_spawner.improved_butterfly_chance += 0.05
 			elif upgrade["id"] == "butterfly4":
-				pass
+				player.arm_scale_level += 1
+			update_shop("butterfly")
 			
 
 func _on_arm1_buy_button_pressed() -> void:
@@ -173,3 +174,6 @@ func _on_upgrade2_buy_button_pressed() -> void:
 
 func _on_upgrade3_buy_button_pressed() -> void:
 	buy_item(shop_elements["butterfly"]["3"])
+
+func _on_upgrade4_buy_button_pressed() -> void:
+	buy_item(shop_elements["butterfly"]["4"])

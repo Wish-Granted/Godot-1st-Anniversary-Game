@@ -581,4 +581,5 @@ expand_icon = true
 [connection signal="pressed" from="Shop Butterfly/Upgrade1/CostBuy/Buy_Button" to="." method="_on_upgrade1_buy_button_pressed"]
 [connection signal="pressed" from="Shop Butterfly/Upgrade2/CostBuy/Buy_Button" to="." method="_on_upgrade2_buy_button_pressed"]
 [connection signal="pressed" from="Shop Butterfly/Upgrade3/CostBuy/Buy_Button" to="." method="_on_upgrade3_buy_button_pressed"]
+[connection signal="pressed" from="Shop Butterfly/Upgrade4/CostBuy/Buy_Button" to="." method="_on_upgrade4_buy_button_pressed"]
 [connection signal="pressed" from="Close Button" to="." method="_on_close_button_pressed"]

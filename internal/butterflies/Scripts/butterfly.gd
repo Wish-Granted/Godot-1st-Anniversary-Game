@@ -8,7 +8,7 @@ extends RigidBody2D
 @onready var movement_timer = $Timer_Movement
 @onready var rotation_timer = $Timer_Rotation
 
-var debug = false
+var debug = true
 
 @export var min_size = 0.2 / 2.0 #size as a percentage of normal amount
 @export var max_size = 0.5 / 2.0 #divided by two as sprite is too big mann
@@ -17,7 +17,7 @@ var is_idle = false
 var is_rotating = false
 var is_moving = false
 var previous_action := "idle"
-	
+
 var move_speed := 400
 var acceleration := 4
 var deceleration := 0.5	
@@ -32,13 +32,14 @@ var butterfly_variation := "basic"
 func _ready() -> void:
 	sprite_butterfly.play("%s_idle" %butterfly_variation)
 	
-	collision_polygon.scale = Vector2(0,0)
-	var size = randf_range(min_size, max_size)
-	var size_tween = collision_polygon.create_tween()
-	self.is_idle = true
-	size_tween.tween_property(collision_polygon, "scale", Vector2(size, size), 1.5)
-	size_tween.tween_callback(func(): do_idle())
-	print_if_debug("butterfly_size: ", snappedf(size,0.01))
+	if len(get_meta_list()) > 1:
+		collision_polygon.scale = Vector2(0,0)
+		var size = randf_range(min_size, max_size)
+		var size_tween = collision_polygon.create_tween()
+		self.is_idle = true
+		size_tween.tween_property(collision_polygon, "scale", Vector2(size, size), 1.5)
+		size_tween.tween_callback(func(): do_idle())
+		print_if_debug("butterfly_size: ", snappedf(size,0.01))
 
 func _physics_process(delta: float) -> void:
 	#if doing nothing
