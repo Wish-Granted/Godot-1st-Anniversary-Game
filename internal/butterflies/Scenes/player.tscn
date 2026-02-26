@@ -272,7 +272,7 @@ z_index = 2
 position = Vector2(-4, -331)
 scale = Vector2(1, 1.2)
 sprite_frames = SubResource("SpriteFrames_j2m8e")
-animation = &"arm_0"
+animation = &"arm_3"
 offset = Vector2(0, 121)
 
 [node name="Arm_area" type="Area2D" parent="AnimatedSprite2D_arm" unique_id=919926301]
@@ -288,9 +288,19 @@ polygon = PackedVector2Array(-8, -336, 8, -336, 8, -256, 0, -160, -16, -160, -8,
 root_node = NodePath("../../../..")
 libraries/ = SubResource("AnimationLibrary_5bqeh")
 
+[node name="Vacuum_area" type="Area2D" parent="AnimatedSprite2D_arm" unique_id=1621491169]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Vacuum_suck_collider" type="CollisionPolygon2D" parent="AnimatedSprite2D_arm/Vacuum_area" unique_id=1902429441]
+polygon = PackedVector2Array(-44, 195.83331, -468, 715.8333, -124, 822.49994, -4, 202.49998)
+disabled = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1856041951]
 position = Vector2(0.5, -221)
 shape = SubResource("RectangleShape2D_1sp1c")
 
 [connection signal="frame_changed" from="AnimatedSprite2D_body" to="." method="_on_animated_sprite_2d_body_frame_changed"]
 [connection signal="body_entered" from="AnimatedSprite2D_arm/Arm_area" to="." method="_on_arm_area_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D_arm/Vacuum_area" to="." method="_on_vacuum_area_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D_arm/Vacuum_area" to="." method="_on_vacuum_area_body_exited"]

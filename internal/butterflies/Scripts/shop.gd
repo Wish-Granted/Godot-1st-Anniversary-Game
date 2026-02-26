@@ -15,6 +15,8 @@ const shop_butterfly_bg = preload("res://internal/butterflies/Assests/Shop/Shop 
 
 var shop_elements: Dictionary[String, Dictionary]
 
+var shop_butterfly_upgrade_levels = [0,0,0,0]
+
 func _ready() -> void:
 	init_element_dictionary()
 
@@ -147,13 +149,26 @@ func buy_item(upgrade: Dictionary) -> void:
 				chocolate_rose_spawner.add_new_rose()
 				butterfly_spawner.number_of_butterflies_each_wave += 1
 				butterfly_spawner.update_max_butterflies()
+				shop_butterfly_upgrade_levels[0] += 1
+				upgrade["cost"].text = str(int(2 + 1.5 ** shop_butterfly_upgrade_levels[0]))
+		
 			elif upgrade["id"] == "butterfly2":
 				butterfly_spawner.rizz_butterfly_chance += 0.05
 				butterfly_spawner.time_between_waves -= 0.2
+				shop_butterfly_upgrade_levels[1] += 1
+				upgrade["cost"].text = str(int(2 + 1.5 ** shop_butterfly_upgrade_levels[1]))
+		
 			elif upgrade["id"] == "butterfly3":
 				butterfly_spawner.improved_butterfly_chance += 0.05
+				shop_butterfly_upgrade_levels[2] += 1
+				upgrade["cost"].text = str(int(200 + 5 ** shop_butterfly_upgrade_levels[2]))
+		
 			elif upgrade["id"] == "butterfly4":
 				player.arm_scale_level += 1
+				player.update_arm_sprite()
+				shop_butterfly_upgrade_levels[3] += 1
+				upgrade["cost"].text = str(int(20 + 5 ** shop_butterfly_upgrade_levels[3]))
+			
 			update_shop("butterfly")
 			
 

@@ -3,10 +3,13 @@ extends VBoxContainer
 @onready var shop_button_arm := $ShopArm
 @onready var shop_button_butterfly := $ShopButterfly
 
+@onready var shop_label := $Label
+
 @onready var shop_gui = $"../shop"
 
 func show_shop_button(button: String) -> void:
 	if button == "arm":
+		shop_label.visible = true
 		shop_button_arm.visible = true
 	elif button == "butterfly":
 		shop_button_butterfly.visible = true

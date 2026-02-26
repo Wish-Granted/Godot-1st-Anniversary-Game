@@ -64,13 +64,17 @@ shader_parameter/onoff = 1.0
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_40pah"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bu4i4"]
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_quucq"]
 shader = ExtResource("2_sclc0")
 shader_parameter/onoff = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40pah"]
+shader = ExtResource("7_ocfam")
+shader_parameter/onoff = 1.0
 
 [node name="shop" type="TextureRect" unique_id=731039237]
 anchors_preset = 8
@@ -187,7 +191,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Arm/Arm2/CostBuy/HBoxContainer" unique_id=2016267820]
 layout_mode = 2
-text = "100"
+text = "200"
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -247,7 +251,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Arm/Arm3/CostBuy/HBoxContainer" unique_id=1847524984]
 layout_mode = 2
-text = "1000"
+text = "2000"
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -322,7 +326,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade1/CostBuy/HBoxContainer" unique_id=580526886]
 layout_mode = 2
-text = "1 "
+text = "2 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -389,7 +393,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade2/CostBuy/HBoxContainer" unique_id=2019295367]
 layout_mode = 2
-text = "1 "
+text = "2 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -468,7 +472,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade3/CostBuy/HBoxContainer" unique_id=1960933992]
 layout_mode = 2
-text = "1 "
+text = "100 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 
@@ -478,7 +482,7 @@ texture = ExtResource("6_4p2ie")
 expand_mode = 2
 
 [node name="Buy_Button" type="TextureButton" parent="Shop Butterfly/Upgrade3/CostBuy" unique_id=96718653]
-material = SubResource("ShaderMaterial_40pah")
+material = SubResource("ShaderMaterial_bu4i4")
 layout_mode = 2
 texture_normal = ExtResource("7_o6a70")
 
@@ -534,7 +538,7 @@ alignment = 1
 
 [node name="Cost" type="Label" parent="Shop Butterfly/Upgrade4/CostBuy/HBoxContainer" unique_id=1230325541]
 layout_mode = 2
-text = "1 "
+text = "5 "
 label_settings = SubResource("LabelSettings_bpve2")
 horizontal_alignment = 1
 

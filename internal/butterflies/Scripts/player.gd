@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var shop := $"../shop"
 @onready var score_bar := $"../Score_Bar"
 
+@onready var vacuum_suck_collider = $AnimatedSprite2D_arm/Vacuum_area/Vacuum_suck_collider
+
 var arm_ready := true
 var arm_level := 0
 var arm_scale_level = 0
@@ -56,10 +58,16 @@ func _process(_delta: float) -> void:
 		do_arm_movement()
 	else:
 		sprite_arm.rotation_degrees = 0
+		if arm_level == 3:
+			sprite_arm.play("arm_3")
+			vacuum_suck_collider.disabled = true
 
 func do_arm_movement() -> void:
 	sprite_arm.look_at(get_global_mouse_position())
 	sprite_arm.rotation_degrees -= 92
+	if arm_level == 3:
+		sprite_arm.play("arm_3_active")
+		vacuum_suck_collider.disabled = false		
 
 const ARM_RESTING_POSITION := -322
 const ARM_Y_POSITION_BY_FRAME_WHEN_WALKING := [
@@ -82,8 +90,18 @@ func _on_arm_area_body_entered(body: Node2D) -> void:
 
 func update_arm_sprite(new_arm_level: int) -> void:
 	arm_level = new_arm_level
+	sprite_arm.scale = Vector2(1,1)
 	if arm_level >= 2:
-		sprite_arm.scale = Vector2(1,1.5) + Vector2(0,0.5) * arm_scale_level
+		sprite_arm.scale = Vector2(1,1.5)
+		
+	sprite_arm.scale += Vector2(0,0.5) * arm_scale_level
 	sprite_arm.play("arm_%s" %arm_level)
 	animation_player_arm_collision.play("arm_%s" %arm_level)
 	
+func _on_vacuum_area_body_entered(body: Node2D) -> void:
+	if "butterfly" in body.name and Input.is_action_pressed("Left Click") and shop.visible == false:
+		body.in_vacuum_area = true
+
+func _on_vacuum_area_body_exited(body: Node2D) -> void:
+	if "butterfly" in body.name and Input.is_action_pressed("Left Click") and shop.visible == false:
+		body.in_vacuum_area = false

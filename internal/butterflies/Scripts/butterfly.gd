@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@onready var player_arm = $"../../Player".sprite_arm
+
 @onready var sprite_butterfly = $CollisionPolygon2D/AnimatedSprite2D
 @onready var collision_polygon = $CollisionPolygon2D
 @onready var ray_cast = $RayCast2D
@@ -29,6 +31,8 @@ var rotation_timeout = false
 var butterfly_variation := "basic"
 # basic, basic_rizz, improved, improved_rizz, dylan
 
+var in_vacuum_area = true
+
 func _ready() -> void:
 	sprite_butterfly.play("%s_idle" %butterfly_variation)
 	
@@ -42,40 +46,44 @@ func _ready() -> void:
 		print_if_debug("butterfly_size: ", snappedf(size,0.01))
 
 func _physics_process(delta: float) -> void:
-	#if doing nothing
-	# if was idling - move
-	# elif was moving - idle
-	if not is_idle and not is_moving:
-		if previous_action == "idle":
-			do_movement()
-		elif previous_action == "moving":
-			do_idle()
-	
-	#moves towards the target rotation
-	if is_rotating:
-		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
-	
-	if snappedf(rotation, 0.01) == snappedf(target_rotation, 0.01) or rotation_timeout:
+	if not in_vacuum_area:
+		# if doing nothing
+		# if was idling - move
+		# elif was moving - idle
+		if not is_idle and not is_moving:
+			if previous_action == "idle":
+				do_movement()
+			elif previous_action == "moving":
+				do_idle()
 		
+		#moves towards the target rotation
 		if is_rotating:
-			print_if_debug("finished rotating")
-			movement_timer.wait_time = randf_range(0.5, 3.0)
-			movement_timer.start()
-			is_rotating = false
-			sprite_butterfly.speed_scale = 1
+			rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
 		
-		var forward_dir = Vector2.UP.rotated(rotation)
-		var target_velocity
-		var weight
-		
-		if is_moving:
-			target_velocity = forward_dir * move_speed
-			weight = acceleration
-		elif not is_moving:
-			target_velocity = Vector2.ZERO
-			weight = deceleration # Default to slowing down
+		if snappedf(rotation, 0.01) == snappedf(target_rotation, 0.01) or rotation_timeout:
 			
-		linear_velocity = linear_velocity.lerp(target_velocity, weight * delta)
+			if is_rotating:
+				print_if_debug("finished rotating")
+				movement_timer.wait_time = randf_range(0.5, 3.0)
+				movement_timer.start()
+				is_rotating = false
+				sprite_butterfly.speed_scale = 1
+			
+			var forward_dir = Vector2.UP.rotated(rotation)
+			var target_velocity
+			var weight
+			
+			if is_moving:
+				target_velocity = forward_dir * move_speed
+				weight = acceleration
+			elif not is_moving:
+				target_velocity = Vector2.ZERO
+				weight = deceleration # Default to slowing down
+				
+			linear_velocity = linear_velocity.lerp(target_velocity, weight * delta)
+	else:
+		pass
+		#position = position.lerp(player_arm.position, 0.1)
 
 func get_valid_rotation(min_rotation: int, max_rotation: int) -> int:
 	var new_rotation: int
