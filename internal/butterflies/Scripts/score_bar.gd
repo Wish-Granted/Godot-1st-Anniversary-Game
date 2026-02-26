@@ -12,7 +12,7 @@ const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_ico
 
 var current_butterfly_count = 0
 var float_font_scale = 1.0
-
+ 
 func _ready() -> void:
 	update_score(0)
 	

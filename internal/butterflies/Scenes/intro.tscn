@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bwccjfrravgpu"]
 
 [ext_resource type="Script" uid="uid://cfv084jdqhqj6" path="res://internal/butterflies/Scripts/intro.gd" id="1_4ddut"]
+[ext_resource type="Texture2D" uid="uid://rcg8qukpydhs" path="res://internal/butterflies/Assests/intro_background.png" id="2_6t5dk"]
 [ext_resource type="Texture2D" uid="uid://cvhdicg1qw0tu" path="res://internal/butterflies/Assests/dylan_sprite_sheet.png" id="2_bl4sd"]
 [ext_resource type="Texture2D" uid="uid://bxfj0m1852pon" path="res://internal/butterflies/Assests/arm_sprite_sheet.png" id="3_amja0"]
 [ext_resource type="PackedScene" uid="uid://fmeub2tm17eo" path="res://internal/butterflies/Scenes/tile_map_layer.tscn" id="4_6t5dk"]
@@ -263,23 +264,68 @@ size = Vector2(51, 424)
 z_index = 10
 script = ExtResource("1_4ddut")
 
+[node name="Background" type="Control" parent="." unique_id=1359210715]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG1" type="TextureRect" parent="Background" unique_id=883101693]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -1080.0
+offset_top = -560.0
+offset_right = 2760.0
+offset_bottom = 520.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5dk")
+
+[node name="BG2" type="TextureRect" parent="Background" unique_id=1485232887]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2760.0
+offset_top = -560.0
+offset_right = 6600.0
+offset_bottom = 520.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5dk")
+
+[node name="BG3" type="TextureRect" parent="Background" unique_id=293159181]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6600.0
+offset_top = -560.0
+offset_right = 10440.0
+offset_bottom = 520.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5dk")
+
+[node name="BG4" type="TextureRect" parent="Background" unique_id=613647771]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10440.0
+offset_top = -560.0
+offset_right = 14280.0
+offset_bottom = 520.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_6t5dk")
+
 [node name="Dylan" type="CharacterBody2D" parent="." unique_id=1000608154]
 position = Vector2(0, 405)
 collision_layer = 2
 collision_mask = 5
-
-[node name="BG" type="ColorRect" parent="Dylan" unique_id=1944251504]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -1000.0
-offset_right = 960.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="AnimatedSprite2D_body" type="AnimatedSprite2D" parent="Dylan" unique_id=2020014924]
 position = Vector2(0, -256)
@@ -339,5 +385,7 @@ tile_map_data = PackedByteArray("AAD4/wMAAAAEAAEAAAD4/wQAAAAJAAAAAAD5/wMAAAAEAAE
 [node name="Butterfly" parent="." unique_id=2081427361 instance=ExtResource("9_biuxg")]
 position = Vector2(8860, 0)
 rotation = -0.34906584
+collision_layer = 0
+collision_mask = 0
 
 [connection signal="frame_changed" from="Dylan/AnimatedSprite2D_body" to="." method="_on_animated_sprite_2d_body_frame_changed"]

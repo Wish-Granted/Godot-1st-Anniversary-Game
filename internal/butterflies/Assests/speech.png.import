@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhtioi0dgpj0p"
-path="res://.godot/imported/temp_speech.png-3f62a74b2ebe9f7703795968c6f4664d.ctex"
+uid="uid://bsush7pt2qmrw"
+path="res://.godot/imported/speech.png-790fb8eff0c974d47b6e83518a72ac8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://internal/butterflies/Assests/temp_speech.png"
-dest_files=["res://.godot/imported/temp_speech.png-3f62a74b2ebe9f7703795968c6f4664d.ctex"]
+source_file="res://internal/butterflies/Assests/speech.png"
+dest_files=["res://.godot/imported/speech.png-790fb8eff0c974d47b6e83518a72ac8f.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bbjvs2v2uowt0"]
 
 [ext_resource type="Texture2D" uid="uid://d0w3cakdut75y" path="res://internal/butterflies/Assests/dylan_talking.png" id="1_bnb5r"]
-[ext_resource type="Texture2D" uid="uid://bhtioi0dgpj0p" path="res://internal/butterflies/Assests/temp_speech.png" id="2_np3oq"]
+[ext_resource type="Texture2D" uid="uid://bsush7pt2qmrw" path="res://internal/butterflies/Assests/speech.png" id="2_bnb5r"]
 [ext_resource type="FontFile" uid="uid://cjsc0rntpenjp" path="res://internal/butterflies/Assests/ARLRDBD.TTF" id="3_wy8n4"]
 [ext_resource type="Script" uid="uid://c0w12k1f6pinp" path="res://internal/butterflies/Scripts/typewriter_effect.gd" id="4_8qc5v"]
 
@@ -43,7 +43,7 @@ flip_h = true
 [node name="Speech_bubble" type="TextureRect" parent="." unique_id=248418982]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("2_np3oq")
+texture = ExtResource("2_bnb5r")
 stretch_mode = 2
 
 [node name="Speech" type="RichTextLabel" parent="Speech_bubble" unique_id=1867281202]
