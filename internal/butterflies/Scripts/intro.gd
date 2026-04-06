@@ -62,10 +62,6 @@ func _ready() -> void:
 	tween_arm_rotation = create_tween()
 	tween_arm_rotation.set_ease(Tween.EASE_IN_OUT)
 	tween_arm_rotation.tween_property(dylan_arm, "rotation_degrees", 0, 0.3)
-	await get_tree().create_timer(0.5).timeout
-	
-	dylan_direction = 1
-	
 	await get_tree().create_timer(1).timeout
 	
 	tween_black_overlay = create_tween()
@@ -120,5 +116,5 @@ func _on_animated_sprite_2d_body_frame_changed() -> void:
 var dylan_lines = [
 	"Bro our anniversary is coming up and i still dont know what to get francia...",
 	"Hmm, I always hear people talking about having butterflies in their stomach...",
-	"I know! I could give her some!"
+	"I know! I could get her some!"
 ]

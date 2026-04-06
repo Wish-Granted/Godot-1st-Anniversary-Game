@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-@onready var player_arm = $"../../Player".sprite_arm
-
 @onready var sprite_butterfly = $CollisionPolygon2D/AnimatedSprite2D
 @onready var collision_polygon = $CollisionPolygon2D
 @onready var ray_cast = $RayCast2D
@@ -10,7 +8,9 @@ extends RigidBody2D
 @onready var movement_timer = $Timer_Movement
 @onready var rotation_timer = $Timer_Rotation
 
-var debug = true
+@onready var player_node = get_tree().get_nodes_in_group("Player")[0]
+
+var debug = false  
 
 @export var min_size = 0.2 / 2.0 #size as a percentage of normal amount
 @export var max_size = 0.5 / 2.0 #divided by two as sprite is too big mann
@@ -31,11 +31,11 @@ var rotation_timeout = false
 var butterfly_variation := "basic"
 # basic, basic_rizz, improved, improved_rizz, dylan
 
-var in_vacuum_area = true
+var in_vacuum_area = false
 
 func _ready() -> void:
 	sprite_butterfly.play("%s_idle" %butterfly_variation)
-	
+
 	if len(get_meta_list()) > 1:
 		collision_polygon.scale = Vector2(0,0)
 		var size = randf_range(min_size, max_size)
@@ -82,8 +82,8 @@ func _physics_process(delta: float) -> void:
 				
 			linear_velocity = linear_velocity.lerp(target_velocity, weight * delta)
 	else:
-		pass
-		#position = position.lerp(player_arm.position, 0.1)
+		
+		global_position = global_position.lerp(player_node.sprite_arm.global_position, 0.01)
 
 func get_valid_rotation(min_rotation: int, max_rotation: int) -> int:
 	var new_rotation: int

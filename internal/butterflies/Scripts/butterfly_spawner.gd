@@ -11,7 +11,7 @@ const butterfly_scene = preload("res://internal/butterflies/Scenes/butterfly.tsc
 var total_alive_butterflies := 0
 var total_butterflies_spawned := 0
 var time_between_waves := 5
-var number_of_butterflies_each_wave := 2
+var number_of_butterflies_each_wave := 20 # testing, default = 2
 var max_butterflies = number_of_butterflies_each_wave * 5
 
 var rizz_butterfly_chance := 0.0

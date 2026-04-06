@@ -14,7 +14,7 @@ var current_butterfly_count = 0
 var float_font_scale = 1.0
  
 func _ready() -> void:
-	update_score(9)
+	update_score(9) # testing
 	
 func update_score(delta_butterflies: int) -> int:
 	# 1. Add/ remove icons
@@ -53,9 +53,9 @@ func update_score(delta_butterflies: int) -> int:
 			butterfly_counter.label_settings.outline_size = 16*float_font_scale
 			self.scale *= Vector2(0.999,0.999)
 	
-	if current_butterfly_count == 10:
+	if current_butterfly_count >= 10 and current_butterfly_count < 20:
 		shop_buttons.show_shop_button("arm")
-	elif current_butterfly_count == 20:
+	elif current_butterfly_count >= 20:
 		shop_buttons.show_shop_button("butterfly")
 	
 	return current_butterfly_count
