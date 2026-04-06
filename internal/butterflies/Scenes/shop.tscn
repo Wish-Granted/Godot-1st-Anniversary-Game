@@ -60,6 +60,10 @@ font_size = 64
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_pm50p"]
+font = ExtResource("5_sclc0")
+font_size = 96
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7bsey"]
 shader = ExtResource("7_ocfam")
 shader_parameter/onoff = 1.0
@@ -356,6 +360,14 @@ grow_vertical = 2
 text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
+[node name="Max" type="Label" parent="Shop Butterfly/Upgrade1" unique_id=682880770]
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "MAX"
+label_settings = SubResource("LabelSettings_pm50p")
+horizontal_alignment = 1
+
 [node name="Upgrade2" type="HBoxContainer" parent="Shop Butterfly" unique_id=952167197]
 custom_minimum_size = Vector2(1456, 250)
 layout_mode = 2
@@ -422,6 +434,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
+
+[node name="Max" type="Label" parent="Shop Butterfly/Upgrade2" unique_id=800738052]
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "MAX"
+label_settings = SubResource("LabelSettings_pm50p")
+horizontal_alignment = 1
 
 [node name="Upgrade3" type="HBoxContainer" parent="Shop Butterfly" unique_id=754467611]
 custom_minimum_size = Vector2(1456, 250)
@@ -502,6 +522,14 @@ grow_vertical = 2
 text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
 
+[node name="Max" type="Label" parent="Shop Butterfly/Upgrade3" unique_id=277224317]
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "MAX"
+label_settings = SubResource("LabelSettings_pm50p")
+horizontal_alignment = 1
+
 [node name="Upgrade4" type="HBoxContainer" parent="Shop Butterfly" unique_id=2139494297]
 custom_minimum_size = Vector2(1456, 197)
 layout_mode = 2
@@ -567,6 +595,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "BUY"
 label_settings = SubResource("LabelSettings_tgn1t")
+
+[node name="Max" type="Label" parent="Shop Butterfly/Upgrade4" unique_id=665221690]
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "MAX"
+label_settings = SubResource("LabelSettings_pm50p")
+horizontal_alignment = 1
 
 [node name="Close Button" type="Button" parent="." unique_id=1506470039]
 layout_mode = 0

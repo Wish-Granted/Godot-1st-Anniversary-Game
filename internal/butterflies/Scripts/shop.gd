@@ -55,7 +55,10 @@ func init_element_dictionary():
 			"icon"        : $"Shop Butterfly/Upgrade1/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade1/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade1/CostBuy/HBoxContainer/Cost",
-			"buy_button"  : $"Shop Butterfly/Upgrade1/CostBuy/Buy_Button"
+			"buy_button"  : $"Shop Butterfly/Upgrade1/CostBuy/Buy_Button",
+			"max_label"   : $"Shop Butterfly/Upgrade1/Max",
+			"max"         : 50,
+			"level"       : 0,
 		},
 		"2": {
 			"id"          : "butterfly2",
@@ -63,7 +66,10 @@ func init_element_dictionary():
 			"icon"        : $"Shop Butterfly/Upgrade2/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade2/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade2/CostBuy/HBoxContainer/Cost",
-			"buy_button"  : $"Shop Butterfly/Upgrade2/CostBuy/Buy_Button"
+			"buy_button"  : $"Shop Butterfly/Upgrade2/CostBuy/Buy_Button",
+			"max_label"   : $"Shop Butterfly/Upgrade2/Max",
+			"max"         : 25,
+			"level"       : 0,
 		},
 		"3": {
 			"id"          : "butterfly3",
@@ -71,7 +77,10 @@ func init_element_dictionary():
 			"icon"        : $"Shop Butterfly/Upgrade3/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade3/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade3/CostBuy/HBoxContainer/Cost",
-			"buy_button"  : $"Shop Butterfly/Upgrade3/CostBuy/Buy_Button"
+			"buy_button"  : $"Shop Butterfly/Upgrade3/CostBuy/Buy_Button",
+			"max_label"   : $"Shop Butterfly/Upgrade3/Max",
+			"max"         : 20,
+			"level"       : 0,
 		},
 		"4": {
 			"id"          : "butterfly4",
@@ -79,7 +88,10 @@ func init_element_dictionary():
 			"icon"        : $"Shop Butterfly/Upgrade4/Icon",
 			"cost_and_buy": $"Shop Butterfly/Upgrade4/CostBuy",
 			"cost"        : $"Shop Butterfly/Upgrade4/CostBuy/HBoxContainer/Cost",
-			"buy_button"  : $"Shop Butterfly/Upgrade4/CostBuy/Buy_Button"
+			"buy_button"  : $"Shop Butterfly/Upgrade4/CostBuy/Buy_Button",
+			"max_label"   : $"Shop Butterfly/Upgrade4/Max",
+			"max"         : 20,
+			"level"       : 0,
 		}
 	}
 }
@@ -142,7 +154,7 @@ func buy_item(upgrade: Dictionary) -> void:
 	if score_bar.current_butterfly_count >= cost:
 		score_bar.update_score(cost*-1)
 		if "arm" in upgrade["id"]:
-			player.update_arm_sprite(int(str(upgrade["id"]).get_slice("arm", 1)))
+			player.update_arm_sprite(int(str(upgrade["id"]).get_slice("arm", 1))) #gets the arm number
 			update_shop("arm")
 		elif "butterfly" in upgrade["id"]:
 			if upgrade["id"] == "butterfly1":
@@ -151,7 +163,7 @@ func buy_item(upgrade: Dictionary) -> void:
 				butterfly_spawner.update_max_butterflies()
 				shop_butterfly_upgrade_levels[0] += 1
 				upgrade["cost"].text = str(int(2 + 1.5 ** shop_butterfly_upgrade_levels[0]))
-		
+
 			elif upgrade["id"] == "butterfly2":
 				butterfly_spawner.rizz_butterfly_chance += 0.05
 				butterfly_spawner.time_between_waves -= 0.2
@@ -169,8 +181,16 @@ func buy_item(upgrade: Dictionary) -> void:
 				shop_butterfly_upgrade_levels[3] += 1
 				upgrade["cost"].text = str(int(20 + 5 ** shop_butterfly_upgrade_levels[3]))
 			
-			update_shop("butterfly")
+			shop_elements["butterfly"][upgrade["id"][-1]]["level"] += 1
+			print(shop_elements["butterfly"][upgrade["id"][-1]]["level"])
+			check_if_upgrade_maxed(upgrade)
 			
+			update_shop("butterfly")
+
+func check_if_upgrade_maxed(upgrade: Dictionary):
+	if upgrade["level"] >= upgrade["max"]:
+		upgrade["cost_and_buy"].visible = false
+		upgrade["max_label"].visible = true
 
 func _on_arm1_buy_button_pressed() -> void:
 	buy_item(shop_elements["arm"]["1"])
