@@ -13,6 +13,8 @@ const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_ico
 var current_butterfly_count = 0
 var float_font_scale = 1.0
  
+var scaled = false
+
 func _ready() -> void:
 	update_score(9) # testing
 	
@@ -29,7 +31,7 @@ func update_score(delta_butterflies: int) -> int:
 		for i in range(delta_butterflies*-1):
 			print("killed")
 			butterfly_display.get_child(0).free()
-
+		call_deferred("recalculate_scale")
 	current_butterfly_count += delta_butterflies
 	butterfly_counter.text = str(current_butterfly_count) + " Butterflies "
 
@@ -47,6 +49,7 @@ func update_score(delta_butterflies: int) -> int:
 		butterfly_display.add_theme_constant_override("separation", 0)
 	
 	if self.size.x*self.scale.x > 1850:
+		scaled = true
 		while self.size.x*self.scale.x > 1850:
 			float_font_scale *= 1.001
 			butterfly_counter.label_settings.font_size = 64*float_font_scale
@@ -58,4 +61,22 @@ func update_score(delta_butterflies: int) -> int:
 	elif current_butterfly_count >= 20:
 		shop_buttons.show_shop_button("butterfly")
 	
+	
 	return current_butterfly_count
+
+
+func recalculate_scale():
+	await get_tree().process_frame
+	if scaled:
+		while self.size.x*self.scale.x < 1800:
+			float_font_scale *= 0.999
+			butterfly_counter.label_settings.font_size = 64*float_font_scale
+			butterfly_counter.label_settings.outline_size = 16*float_font_scale
+			self.scale = Vector2(1.001,1.001)
+			if float_font_scale < 1 or self.scale.x > 1:
+				self.scale = Vector2(1,1)
+				float_font_scale = 1
+				butterfly_counter.label_settings.font_size = 64*float_font_scale
+				butterfly_counter.label_settings.outline_size = 16*float_font_scale
+				scaled = false
+				break
