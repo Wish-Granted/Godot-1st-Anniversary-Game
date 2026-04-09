@@ -16,11 +16,12 @@ var float_font_scale = 1.0
 var scaled = false
 
 func _ready() -> void:
-	update_score(9) # testing
+	update_score(0) # testing
 	
 func update_score(delta_butterflies: int) -> int:
 	# 1. Add/ remove icons
 	if delta_butterflies > 0:
+		delta_butterflies *= 10
 		for i in range(delta_butterflies):
 			var rect = TextureRect.new()
 			rect.texture = butterfly_icon
@@ -29,8 +30,8 @@ func update_score(delta_butterflies: int) -> int:
 			butterfly_display.add_child(rect)
 	elif delta_butterflies < 0:
 		for i in range(delta_butterflies*-1):
-			print("killed")
 			butterfly_display.get_child(0).free()
+		print("killed: ", delta_butterflies)
 		call_deferred("recalculate_scale")
 	current_butterfly_count += delta_butterflies
 	butterfly_counter.text = str(current_butterfly_count) + " Butterflies "

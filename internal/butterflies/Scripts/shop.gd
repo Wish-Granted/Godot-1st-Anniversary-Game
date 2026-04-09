@@ -166,7 +166,7 @@ func buy_item(upgrade: Dictionary) -> void:
 
 			elif upgrade["id"] == "butterfly2":
 				butterfly_spawner.rizz_butterfly_chance += 0.05
-				butterfly_spawner.time_between_waves -= 0.2
+				butterfly_spawner.time_between_waves -= 0.2 if butterfly_spawner.time_between_waves != 0.2 else 0.19
 				shop_butterfly_upgrade_levels[1] += 1
 				upgrade["cost"].text = str(int(2 + 1.5 ** shop_butterfly_upgrade_levels[1]))
 		
@@ -182,7 +182,6 @@ func buy_item(upgrade: Dictionary) -> void:
 				upgrade["cost"].text = str(int(20 + 5 ** shop_butterfly_upgrade_levels[3]))
 			
 			shop_elements["butterfly"][upgrade["id"][-1]]["level"] += 1
-			print(shop_elements["butterfly"][upgrade["id"][-1]]["level"])
 			check_if_upgrade_maxed(upgrade)
 			
 			update_shop("butterfly")

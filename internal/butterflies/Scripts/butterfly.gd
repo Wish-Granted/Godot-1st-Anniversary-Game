@@ -82,8 +82,7 @@ func _physics_process(delta: float) -> void:
 				
 			linear_velocity = linear_velocity.lerp(target_velocity, weight * delta)
 	else:
-		
-		global_position = global_position.lerp(player_node.sprite_arm.global_position, 0.01)
+		global_position = global_position.lerp(player_node.sprite_arm.global_position, 0.075)
 
 func get_valid_rotation(min_rotation: int, max_rotation: int) -> int:
 	var new_rotation: int
