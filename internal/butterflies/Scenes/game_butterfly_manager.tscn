@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://djvk54i1nt03n"]
 
+[ext_resource type="Script" uid="uid://gntjqtnkxw6k" path="res://internal/butterflies/Scripts/game_butterfly_manager.gd" id="1_847fg"]
 [ext_resource type="PackedScene" uid="uid://ibglkisvklgk" path="res://internal/butterflies/Scenes/game_butterfly.tscn" id="1_nqma5"]
 [ext_resource type="PackedScene" uid="uid://bwccjfrravgpu" path="res://internal/butterflies/Scenes/intro.tscn" id="2_847fg"]
 
 [node name="game_butterfly_manager" type="Node2D" unique_id=806064209]
+script = ExtResource("1_847fg")
 
 [node name="game_butterfly" parent="." unique_id=1890362736 instance=ExtResource("1_nqma5")]
 process_mode = 4

@@ -191,6 +191,18 @@ func check_if_upgrade_maxed(upgrade: Dictionary):
 		upgrade["cost_and_buy"].visible = false
 		upgrade["max_label"].visible = true
 
+func get_butterfly_shop_upgrade_levels() -> Array:
+	var butterfly_shop_upgrade_levels := []
+	
+	for upgrade in shop_elements["butterfly"]:
+		butterfly_shop_upgrade_levels.append(shop_elements["butterfly"][upgrade]["level"])
+	
+	return butterfly_shop_upgrade_levels
+
+func load_butterfly_shop_upgrade_levels(new_levels: Array):
+	for index in range(new_levels.size()):
+		shop_elements["butterfly"][str(index+1)]["level"] = new_levels[index]
+
 func _on_arm1_buy_button_pressed() -> void:
 	buy_item(shop_elements["arm"]["1"])
 

@@ -13,14 +13,17 @@ const butterfly_icon = preload("res://internal/butterflies/Assests/butterfly_ico
 var current_butterfly_count = 0
 var float_font_scale = 1.0
  
+var total_butterflies_collected := 0
+
 var scaled = false
 
 func _ready() -> void:
 	update_score(0) # testing
-	
+
 func update_score(delta_butterflies: int) -> int:
 	# 1. Add/ remove icons
 	if delta_butterflies > 0:
+		total_butterflies_collected += delta_butterflies
 		delta_butterflies *= 10
 		for i in range(delta_butterflies):
 			var rect = TextureRect.new()
@@ -57,9 +60,9 @@ func update_score(delta_butterflies: int) -> int:
 			butterfly_counter.label_settings.outline_size = 16*float_font_scale
 			self.scale *= Vector2(0.999,0.999)
 	
-	if current_butterfly_count >= 10 and current_butterfly_count < 20:
+	if current_butterfly_count >= 10:
 		shop_buttons.show_shop_button("arm")
-	elif current_butterfly_count >= 20:
+	if current_butterfly_count >= 20:
 		shop_buttons.show_shop_button("butterfly")
 	
 	
@@ -68,12 +71,13 @@ func update_score(delta_butterflies: int) -> int:
 
 func recalculate_scale():
 	await get_tree().process_frame
+	#print("before: ", self.size.x*self.scale.x, " | ", float_font_scale, " | ", self.scale)
 	if scaled:
 		while self.size.x*self.scale.x < 1800:
 			float_font_scale *= 0.999
 			butterfly_counter.label_settings.font_size = 64*float_font_scale
 			butterfly_counter.label_settings.outline_size = 16*float_font_scale
-			self.scale = Vector2(1.001,1.001)
+			self.scale *= Vector2(1.001,1.001)
 			if float_font_scale < 1 or self.scale.x > 1:
 				self.scale = Vector2(1,1)
 				float_font_scale = 1
@@ -81,3 +85,4 @@ func recalculate_scale():
 				butterfly_counter.label_settings.outline_size = 16*float_font_scale
 				scaled = false
 				break
+	#print("after: ", self.size.x*self.scale.x, " | ", float_font_scale, " | ", self.scale)

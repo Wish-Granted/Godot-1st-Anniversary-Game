@@ -21,7 +21,7 @@ const SPEED = 400
 const JUMP_VELOCITY = -1600
 
 func _ready() -> void:
-	update_arm_sprite(3)#(arm_level)
+	update_arm_sprite(0)#(arm_level)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

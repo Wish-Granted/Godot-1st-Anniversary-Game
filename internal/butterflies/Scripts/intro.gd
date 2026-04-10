@@ -17,7 +17,7 @@ var dylan_jump = false
 
 @onready var intro_camera = $Dylan/Camera2D
 
-@onready var game_butterfly = $"../game_butterfly"
+@onready var game_butterfly_manager = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,13 +67,8 @@ func _ready() -> void:
 	tween_black_overlay = create_tween()
 	tween_black_overlay.tween_property(black_overlay, "color", Color(0.0, 0.0, 0.0, 1), 3.0)
 	await get_tree().create_timer(4).timeout
-	self.process_mode = Node.PROCESS_MODE_DISABLED
-	game_butterfly.process_mode = Node.AUTO_TRANSLATE_MODE_INHERIT
-	game_butterfly.main_camera.make_current()
-	game_butterfly.visible = true
-	self.visible = false	
-
-
+	
+	game_butterfly_manager.start_game()
 	
 
 func _physics_process(delta: float) -> void:
